@@ -1,153 +1,517 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>新年快乐</title><!-- 这是网页标题 -->
+<title>acm.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
 <style>
-body{
-  overflow: hidden;
-  margin: 0;
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
 }
-h1{
-  position: fixed;
-  top: 30%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  transform:translateY(-50%);
-  font-family: 'Love Ya Like A Sister', cursive;
-  font-size: 60px;
-  color: #c70012;
-  padding: 0 20px;
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
 }
-h1 span{
-  position: fixed;
-  left: 0;
-  width: 100%;
-  text-align: center;
-margin-top:30px;
-    font-size:40px;
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
 }
 </style>
 
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
-<h1 id="h1"></h1>
-<canvas></canvas> <!--canvas 画布-->
-
-<script>
-var canvas = document.querySelector("canvas"),
-  ctx = canvas.getContext("2d");
-
-var ww,wh;
-
-function onResize(){
-  ww = canvas.width = window.innerWidth;
-  wh = canvas.height = window.innerHeight;
-}
-
-ctx.strokeStyle = "red";
-ctx.shadowBlur = 25;
-ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
-
-var precision = 100;
-var hearts = [];
-var mouseMoved = false;
-function onMove(e){
-  mouseMoved = true;
-  if(e.type === "touchmove"){
-    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
-    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
-  }
-  else{
-    hearts.push(new Heart(e.clientX, e.clientY));
-    hearts.push(new Heart(e.clientX, e.clientY));
-  }
-}
-
-var Heart = function(x,y){
-  this.x = x || Math.random()*ww;
-  this.y = y || Math.random()*wh;
-  this.size = Math.random()*2 + 1;
-  this.shadowBlur = Math.random() * 10;
-  this.speedX = (Math.random()+0.2-0.6) * 8;
-  this.speedY = (Math.random()+0.2-0.6) * 8;
-  this.speedSize = Math.random()*0.05 + 0.01;
-  this.opacity = 1;
-  this.vertices = [];
-  for (var i = 0; i < precision; i++) {
-    var step = (i / precision - 0.5) * (Math.PI * 2);
-    var vector = {
-      x : (15 * Math.pow(Math.sin(step), 3)),
-      y : -(13 * Math.cos(step) - 5 * Math.cos(2 * step) - 2 * Math.cos(3 * step) - Math.cos(4 * step)) 
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="centeracm%E6%A8%A1%E6%9D%BFcenter---omit-in-toc"><center>ACM模板</center><!-- omit in toc --></h1>
+<ul>
+<li><a href="#1-%E5%B8%B8%E7%94%A8%E6%9D%82%E9%A1%B9">1. 常用杂项</a>
+<ul>
+<li><a href="#11-%E8%AF%BB%E5%85%A5%E8%BE%93%E5%87%BA%E4%BC%98%E5%8C%96">1.1. 读入输出优化</a>
+<ul>
+<li><a href="#111-%E8%A7%A3%E9%99%A4%E6%B5%81%E5%90%8C%E6%AD%A5">1.1.1. 解除流同步</a></li>
+<li><a href="#112-%E5%BF%AB%E8%AF%BB">1.1.2. 快读</a></li>
+</ul>
+</li>
+<li><a href="#12-%E5%BF%AB%E5%86%99">1.2. 快写</a></li>
+<li><a href="#13-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.3. 文件操作</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">2. 数据结构</a>
+<ul>
+<li><a href="#21-%E5%90%91%E9%87%8F">2.1. 向量</a></li>
+<li><a href="#22-%E6%A0%88">2.2. 栈</a></li>
+<li><a href="#23-%E9%98%9F%E5%88%97">2.3. 队列</a></li>
+<li><a href="#24-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">2.4. 双端队列</a></li>
+</ul>
+</li>
+<li><a href="#3-%E5%9B%BE%E8%AE%BA">3. 图论</a></li>
+<li><a href="#4-%E6%95%B0%E8%AE%BA">4. 数论</a>
+<ul>
+<li><a href="#41-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">4.1. 最大公约数</a></li>
+<li><a href="#42-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">4.2. 最小公倍数</a></li>
+<li><a href="#43-%E5%BF%AB%E9%80%9F%E5%B9%82">4.3. 快速幂</a></li>
+</ul>
+</li>
+<li><a href="#5-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">5. 动态规划</a></li>
+<li><a href="#6-%E5%AD%97%E7%AC%A6%E4%B8%B2">6. 字符串</a></li>
+<li><a href="#7-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">7. 计算几何</a></li>
+</ul>
+<h2 id="1-%E5%B8%B8%E7%94%A8%E6%9D%82%E9%A1%B9">1. 常用杂项</h2>
+<h3 id="11-%E8%AF%BB%E5%85%A5%E8%BE%93%E5%87%BA%E4%BC%98%E5%8C%96">1.1. 读入输出优化</h3>
+<h4 id="111-%E8%A7%A3%E9%99%A4%E6%B5%81%E5%90%8C%E6%AD%A5">1.1.1. 解除流同步</h4>
+<pre class="hljs"><code><div>ios::sync_with_stdio(<span class="hljs-literal">false</span>);
+<span class="hljs-built_in">cin</span>.tie(<span class="hljs-number">0</span>);
+<span class="hljs-built_in">cout</span>.tie(<span class="hljs-number">0</span>);
+</div></code></pre>
+<h4 id="112-%E5%BF%AB%E8%AF%BB">1.1.2. 快读</h4>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">char</span> ch=getchar();
+    <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">isdigit</span>(ch)){
+        <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)
+            f=<span class="hljs-number">-1</span>;
+        ch=getchar();
     }
-    this.vertices.push(vector);
-  }
-}
-
-Heart.prototype.draw = function(){
-  this.size -= this.speedSize;
-  this.x += this.speedX;
-  this.y += this.speedY;
-  ctx.save();
-  ctx.translate(-1000,this.y);
-  ctx.scale(this.size, this.size);
-  ctx.beginPath();
-  for (var i = 0; i < precision; i++) {
-    var vector = this.vertices[i];
-    ctx.lineTo(vector.x, vector.y);
-  }
-  ctx.globalAlpha = this.size;
-  ctx.shadowBlur = Math.round((3 - this.size) * 10);
-  ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
-  ctx.shadowOffsetX = this.x + 1000;
-  ctx.globalCompositeOperation = "screen"
-  ctx.closePath();
-  ctx.fill()
-  ctx.restore();
-};
-
-
-function render(a){
-  requestAnimationFrame(render);
-
-  hearts.push(new Heart())
-  ctx.clearRect(0,0,ww,wh);
-  for (var i = 0; i < hearts.length; i++) {
-    hearts[i].draw();
-    if(hearts[i].size <= 0){
-      hearts.splice(i,1);
-      i--;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">isdigit</span>(ch)){
+        x=x*<span class="hljs-number">10</span>+ch-<span class="hljs-string">'0'</span>;
+        ch=getchar();
     }
-  }
+    <span class="hljs-keyword">return</span> x*f;
 }
-
-
-onResize();
-window.addEventListener("mousemove", onMove);
-window.addEventListener("touchmove", onMove);
-window.addEventListener("resize", onResize);
-requestAnimationFrame(render);
-
-window.onload=function starttime(){
-        time(h1,'2024/1/1');     // 2021年春节时间
-        ptimer = setTimeout(starttime,1000); // 添加计时器
-}
-
-    function time(obj,futimg){
-        var nowtime = new Date().getTime(); // 现在时间转换为时间戳
-        var futruetime =  new Date(futimg).getTime(); // 未来时间转换为时间戳
-        var msec = futruetime-nowtime; // 毫秒 未来时间-现在时间
-        var time = (msec/1000);  // 毫秒/1000
-        var day = parseInt(time/86400); // 天  24*60*60*1000 
-        var hour = parseInt(time/3600)-24*day;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
-        var minute = parseInt(time%3600/60); // 分 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
-        var second = parseInt(time%60);  // 以60秒为一整份 取余 剩下秒数
-        obj.innerHTML="<br>距离2024年还有：<br>"+day+"天"+hour+"小时"+minute+"分"+second+"秒"+"<br><span>2023，你一定要开心。<br>你开心最重要。<br>May the people I think of be safe and happy, <br>and may the things I think of be all right.</span>"
-        return true;
+</div></code></pre>
+<h3 id="12-%E5%BF%AB%E5%86%99">1.2. 快写</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> sta[<span class="hljs-number">35</span>];
+    <span class="hljs-keyword">int</span> top = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>){
+        x=-x;
+        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'-'</span>);
     }
-</script>
-<audio autoplay="autoplay" loop="loop" preload="auto"     src="http://music.163.com/song/media/outer/url?id=1851244378.mp3">       
-</audio>
+
+    <span class="hljs-keyword">do</span>{
+        sta[top++]=x%<span class="hljs-number">10</span>;
+        x/=<span class="hljs-number">10</span>;
+    }<span class="hljs-keyword">while</span>(x);
+    <span class="hljs-keyword">while</span>(top) 
+        <span class="hljs-built_in">putchar</span>(sta[--top]+<span class="hljs-string">'0'</span>); 
+}
+</div></code></pre>
+<h3 id="13-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.3. 文件操作</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">//重定向后printf/scanf/cin/cout等函数正常使用</span>
+freopen(<span class="hljs-string">"data.in"</span>,<span class="hljs-string">"r"</span>,<span class="hljs-built_in">stdin</span>);
+freopen(<span class="hljs-string">"ans.out"</span>,<span class="hljs-string">"w"</span>,<span class="hljs-built_in">stdout</span>);
+
+<span class="hljs-comment">//关闭标准输入/输出流</span>
+fclose(<span class="hljs-built_in">stdin</span>);
+fclose(<span class="hljs-built_in">stdout</span>);
+</div></code></pre>
+<h2 id="2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">2. 数据结构</h2>
+<h3 id="21-%E5%90%91%E9%87%8F">2.1. 向量</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;T&gt;a;
+a.assign();<span class="hljs-comment">//对Vector中的元素赋值 </span>
+a.front();<span class="hljs-comment">//返回第一个元素 </span>
+a.back();<span class="hljs-comment">//返回最末一个元素 </span>
+a.<span class="hljs-built_in">begin</span>();<span class="hljs-comment">//返回第一个元素的迭代器 </span>
+a.<span class="hljs-built_in">end</span>();<span class="hljs-comment">//返回最末元素下一个位置的迭代器</span>
+a.<span class="hljs-built_in">clear</span>();<span class="hljs-comment">//清空所有元素 </span>
+a.empty();<span class="hljs-comment">//为空时返回真 </span>
+a.erase();<span class="hljs-comment">//删除指定元素 </span>
+a.insert();<span class="hljs-comment">//插入元素  </span>
+a.pop_back();<span class="hljs-comment">//移除最后一个元素 </span>
+a.push_back();<span class="hljs-comment">//在最后添加一个元素 </span>
+a.rbegin();<span class="hljs-comment">//返回尾部的逆迭代器 </span>
+a.rend();<span class="hljs-comment">//返回起始的逆迭代器 </span>
+a.resize();<span class="hljs-comment">//改变元素数量 </span>
+a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回元素数量 </span>
+a.swap();<span class="hljs-comment">//交换两个向量</span>
+</div></code></pre>
+<h3 id="22-%E6%A0%88">2.2. 栈</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">stack</span>&lt;T&gt;a;
+a.push();<span class="hljs-comment">//入栈</span>
+a.pop();<span class="hljs-comment">//出栈</span>
+a.top();<span class="hljs-comment">//返回栈顶元素</span>
+a.empty();<span class="hljs-comment">//栈为空返回真</span>
+a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回栈内元素数量</span>
+</div></code></pre>
+<h3 id="23-%E9%98%9F%E5%88%97">2.3. 队列</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">queue</span>&lt;T&gt;q;
+q.push();<span class="hljs-comment">//入队</span>
+q.pop();<span class="hljs-comment">//出队</span>
+q.front();<span class="hljs-comment">//返回队首元素</span>
+q.back();<span class="hljs-comment">//返回队尾元素</span>
+q.empty();<span class="hljs-comment">//队为空返回真</span>
+q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回队内元素数量</span>
+</div></code></pre>
+<h3 id="24-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">2.4. 双端队列</h3>
+<h2 id="3-%E5%9B%BE%E8%AE%BA">3. 图论</h2>
+<h2 id="4-%E6%95%B0%E8%AE%BA">4. 数论</h2>
+<h3 id="41-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">4.1. 最大公约数</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>{
+    <span class="hljs-keyword">return</span> a==<span class="hljs-number">0</span>?b:gcd(b%a,a);
+}
+</div></code></pre>
+<h3 id="42-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">4.2. 最小公倍数</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lcm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>{
+    <span class="hljs-keyword">return</span> a/gcd(a,b)*b;
+}
+</div></code></pre>
+<h3 id="43-%E5%BF%AB%E9%80%9F%E5%B9%82">4.3. 快速幂</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p)</span></span>{
+    <span class="hljs-keyword">if</span>(p==<span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> he=ksm(n,p/<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">if</span>(p%<span class="hljs-number">2</span>)
+        <span class="hljs-keyword">return</span> he*he*n;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> he*he;
+}
+</div></code></pre>
+<h2 id="5-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">5. 动态规划</h2>
+<h2 id="6-%E5%AD%97%E7%AC%A6%E4%B8%B2">6. 字符串</h2>
+<h2 id="7-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">7. 计算几何</h2>
+
 </body>
 </html>
