@@ -386,9 +386,18 @@ code {
 <li><a href="#32-%E6%A0%88">3.2. 栈</a></li>
 <li><a href="#33-%E9%98%9F%E5%88%97">3.3. 队列</a></li>
 <li><a href="#34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</a></li>
+<li><a href="#35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</a></li>
 </ul>
 </li>
-<li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a></li>
+<li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a>
+<ul>
+<li><a href="#41-%E6%9C%80%E7%9F%AD%E8%B7%AF">4.1. 最短路</a>
+<ul>
+<li><a href="#411-floyd--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd--经典范围n=500</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#5-%E6%95%B0%E8%AE%BA">5. 数论</a>
 <ul>
 <li><a href="#51-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">5.1. 最大公约数</a></li>
@@ -406,7 +415,12 @@ code {
 </li>
 </ul>
 </li>
-<li><a href="#6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</a></li>
+<li><a href="#6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</a>
+<ul>
+<li><a href="#61-01%E8%83%8C%E5%8C%85">6.1. 01背包</a></li>
+<li><a href="#62-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85">6.2. 完全背包</a></li>
+</ul>
+</li>
 <li><a href="#7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</a></li>
 <li><a href="#8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</a></li>
 </ul>
@@ -463,7 +477,7 @@ fclose(<span class="hljs-built_in">stdout</span>);
 <h2 id="3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">3. 数据结构</h2>
 <h3 id="31-%E5%90%91%E9%87%8F">3.1. 向量</h3>
 <pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;T&gt;a;
-a.assign();<span class="hljs-comment">//对Vector中的元素赋值 </span>
+a.assign();<span class="hljs-comment">//对向量中的元素赋值 </span>
 a.front();<span class="hljs-comment">//返回第一个元素 </span>
 a.back();<span class="hljs-comment">//返回最末一个元素 </span>
 a.<span class="hljs-built_in">begin</span>();<span class="hljs-comment">//返回第一个元素的迭代器 </span>
@@ -498,7 +512,57 @@ q.empty();<span class="hljs-comment">//队为空返回真</span>
 q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回队内元素数量</span>
 </div></code></pre>
 <h3 id="34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">deque</span>&lt;T&gt;a; 
+a.assign();<span class="hljs-comment">//赋值</span>
+a.at();<span class="hljs-comment">//返回指定的元素 </span>
+a.front();<span class="hljs-comment">//返回首元素 </span>
+a.back();<span class="hljs-comment">//返回尾元素 </span>
+a.<span class="hljs-built_in">begin</span>();<span class="hljs-comment">//返回指向第一个元素的迭代器 </span>
+a.<span class="hljs-built_in">end</span>();<span class="hljs-comment">//返回指向尾部的迭代器</span>
+a.<span class="hljs-built_in">clear</span>();<span class="hljs-comment">//删除所有元素 </span>
+a.empty();<span class="hljs-comment">//为空返回真  </span>
+a.erase();<span class="hljs-comment">//删除一个元素  </span>
+a.insert();<span class="hljs-comment">//插入一个元素</span>
+a.pop_front();<span class="hljs-comment">//删除头部的元素 </span>
+a.pop_back();<span class="hljs-comment">//删除尾部的元素</span>
+a.push_front();<span class="hljs-comment">//在头部加入一个元素 </span>
+a.push_back();<span class="hljs-comment">//在尾部加入一个元素 </span>
+a.rend();<span class="hljs-comment">//返回指向头部的逆向迭代器  </span>
+a.rbegin();<span class="hljs-comment">//返回指向尾部的逆向迭代器 </span>
+a.resize();<span class="hljs-comment">//改变大小 </span>
+a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回元素个数 </span>
+a.swap();<span class="hljs-comment">//和另一个双端队列交换元素 </span>
+</div></code></pre>
+<h3 id="35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</h3>
 <h2 id="4-%E5%9B%BE%E8%AE%BA">4. 图论</h2>
+<h3 id="41-%E6%9C%80%E7%9F%AD%E8%B7%AF">4.1. 最短路</h3>
+<h4 id="411-floyd--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd--经典范围n=500</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long </span>
+<span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n,m;<span class="hljs-comment">//n个点，m条边</span>
+    <span class="hljs-keyword">int</span> inf=INT_MAX;<span class="hljs-comment">//未开long long 使用INT_MAX 可能INT_MAX+INT_MAX溢出导致错误</span>
+    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;
+    <span class="hljs-keyword">int</span> dp[n+<span class="hljs-number">1</span>][n+<span class="hljs-number">1</span>];
+    <span class="hljs-built_in">fill</span>(dp[<span class="hljs-number">0</span>],dp[<span class="hljs-number">0</span>]+(n+<span class="hljs-number">1</span>)*(n+<span class="hljs-number">1</span>),inf);<span class="hljs-comment">//初始化为inf,即两个点之间不连接</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++){
+        dp[i][i]=<span class="hljs-number">0</span>;<span class="hljs-comment">//i-&gt;i距离为零</span>
+    }
+    
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++){
+        <span class="hljs-keyword">int</span> u,v,w;
+        <span class="hljs-built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;<span class="hljs-comment">//u-&gt;v 长为w</span>
+        dp[u][v]=<span class="hljs-built_in">min</span>(dp[u][v],w);
+        dp[v][u]=<span class="hljs-built_in">min</span>(dp[v][u],w);<span class="hljs-comment">//无向图</span>
+    }
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>;k&lt;=n;k++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)
+                dp[i][j]=<span class="hljs-built_in">min</span>(dp[i][j],dp[i][k]+dp[k][j]);<span class="hljs-comment">//i-&gt;j,i-&gt;k-&gt;j</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
 <h2 id="5-%E6%95%B0%E8%AE%BA">5. 数论</h2>
 <h3 id="51-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">5.1. 最大公约数</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>{
@@ -553,6 +617,41 @@ q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回�
 }
 </div></code></pre>
 <h2 id="6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</h2>
+<h3 id="61-01%E8%83%8C%E5%8C%85">6.1. 01背包</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n,m;<span class="hljs-comment">//n为物品数量，m为给定体积</span>
+    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;
+    <span class="hljs-keyword">int</span> v[n],w[n];<span class="hljs-comment">//v为物品体积，w为物品价值</span>
+    <span class="hljs-keyword">int</span> dp[m+<span class="hljs-number">1</span>];
+    <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-built_in">cin</span>&gt;&gt;v[i]&gt;&gt;w[i];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=m;j&gt;=v[i];j--)
+            dp[j]=<span class="hljs-built_in">max</span>(dp[j],dp[j-v[i]]+w[i]);
+    <span class="hljs-built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
+<h3 id="62-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85">6.2. 完全背包</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n,m;<span class="hljs-comment">//n为物品数量，m为给定体积</span>
+    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;
+    <span class="hljs-keyword">int</span> v[n],w[n];<span class="hljs-comment">//v为物品体积，w为物品价值</span>
+    <span class="hljs-keyword">int</span> dp[m+<span class="hljs-number">1</span>];
+    <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-built_in">cin</span>&gt;&gt;v[i]&gt;&gt;w[i];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=v[i];j&lt;=m;j++){
+            dp[j]=<span class="hljs-built_in">max</span>(dp[j],dp[j-v[i]]+w[i]);
+        }
+    <span class="hljs-built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
 <h2 id="7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</h2>
 <h2 id="8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</h2>
 
