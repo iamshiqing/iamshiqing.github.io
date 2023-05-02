@@ -387,13 +387,15 @@ code {
 <li><a href="#33-%E9%98%9F%E5%88%97">3.3. 队列</a></li>
 <li><a href="#34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</a></li>
 <li><a href="#35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</a></li>
+<li><a href="#36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a>
 <ul>
 <li><a href="#41-%E6%9C%80%E7%9F%AD%E8%B7%AF">4.1. 最短路</a>
 <ul>
-<li><a href="#411-floyd--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd--经典范围n=500</a></li>
+<li><a href="#411-floyd%E5%A4%9A%E6%BA%90--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd（多源）--经典范围n=500</a></li>
+<li><a href="#412-dijkstra%E5%A0%86%E4%BC%98%E5%8C%96%E7%89%88%E5%8D%95%E6%BA%90">4.1.2. Dijkstra堆优化版（单源）</a></li>
 </ul>
 </li>
 </ul>
@@ -413,6 +415,7 @@ code {
 <li><a href="#541-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.4.1. 费马小定理</a></li>
 </ul>
 </li>
+<li><a href="#55-%E7%B4%A0%E6%95%B0%E7%AD%9B">5.5. 素数筛</a></li>
 </ul>
 </li>
 <li><a href="#6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</a>
@@ -534,9 +537,52 @@ a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回�
 a.swap();<span class="hljs-comment">//和另一个双端队列交换元素 </span>
 </div></code></pre>
 <h3 id="35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</h3>
+<pre class="hljs"><code><div>priority_queue&lt;T&gt;q;<span class="hljs-comment">//降序,即top()为最大值</span>
+priority_queue&lt;T,<span class="hljs-built_in">vector</span>&lt;T&gt;,greater&lt;T&gt; &gt;q;<span class="hljs-comment">//升序,即top()为最小值</span>
+q.top();<span class="hljs-comment">//返回优先级最高的元素</span>
+q.push();<span class="hljs-comment">//加入一个元素</span>
+q.pop();<span class="hljs-comment">//删除第一个元素</span>
+q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回元素个数 </span>
+q.empty();<span class="hljs-comment">//为空返回真 </span>
+</div></code></pre>
+<h3 id="36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000</span>;
+<span class="hljs-keyword">int</span> root[MAX];<span class="hljs-comment">//存每个点的根节点</span>
+<span class="hljs-keyword">int</span> tall[MAX];<span class="hljs-comment">//存每个节点的高，优化合并</span>
+<span class="hljs-comment">//初始化根节点为自己，高为0</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;MAX;i++)
+        root[i]=i,tall[i]=<span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">//递归查找根节点，并更新</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">if</span>(n==root[n])
+        <span class="hljs-keyword">return</span> n;
+    <span class="hljs-keyword">else</span> 
+        <span class="hljs-keyword">return</span> root[n]=<span class="hljs-built_in">find</span>(root[n]);
+}
+<span class="hljs-comment">//判断x,y是否在同一个集合</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">issame</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+} 
+<span class="hljs-comment">//合并x，y两个集合</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>{
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tall[x]&lt;tall[y])
+        root[y]=x;
+    <span class="hljs-keyword">else</span>{
+        root[x]=y;
+        <span class="hljs-keyword">if</span>(tall[x]==tall[y])
+            tall[x]++;
+    }
+}
+</div></code></pre>
 <h2 id="4-%E5%9B%BE%E8%AE%BA">4. 图论</h2>
 <h3 id="41-%E6%9C%80%E7%9F%AD%E8%B7%AF">4.1. 最短路</h3>
-<h4 id="411-floyd--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd--经典范围n=500</h4>
+<h4 id="411-floyd%E5%A4%9A%E6%BA%90--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd（多源）--经典范围n=500</h4>
 <pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long </span>
@@ -560,6 +606,48 @@ a.swap();<span class="hljs-comment">//和另一个双端队列交换元素 </spa
         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
             <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)
                 dp[i][j]=<span class="hljs-built_in">min</span>(dp[i][j],dp[i][k]+dp[k][j]);<span class="hljs-comment">//i-&gt;j,i-&gt;k-&gt;j</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h4 id="412-dijkstra%E5%A0%86%E4%BC%98%E5%8C%96%E7%89%88%E5%8D%95%E6%BA%90">4.1.2. Dijkstra堆优化版（单源）</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> P pair<span class="hljs-meta-string">&lt;int,int&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>{</span>
+    <span class="hljs-keyword">int</span> to,val; <span class="hljs-comment">//to为这条边的终点，val为这条边的权</span>
+};
+<span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> n,m,s;<span class="hljs-comment">//n个点，m条边，s起始点</span>
+    <span class="hljs-keyword">int</span> inf=INT_MAX;<span class="hljs-comment">//未开long long 使用INT_MAX 可能INT_MAX+INT_MAX溢出导致错误</span>
+    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    <span class="hljs-built_in">vector</span>&lt;edge&gt;a[n+<span class="hljs-number">1</span>];<span class="hljs-comment">//存图</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++){
+        <span class="hljs-keyword">int</span> u,v,w;<span class="hljs-comment">//u-&gt;v 边权为w</span>
+        <span class="hljs-built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;
+        a[u].push_back({v,w});
+        a[v].push_back({u,w});<span class="hljs-comment">//无向图</span>
+    }
+    <span class="hljs-keyword">int</span> dp[n+<span class="hljs-number">1</span>];<span class="hljs-comment">//s至每个点的距离</span>
+    <span class="hljs-built_in">fill</span>(dp,dp+n+<span class="hljs-number">1</span>,inf);<span class="hljs-comment">//初始s与所有点不连通</span>
+    dp[s]=<span class="hljs-number">0</span>;<span class="hljs-comment">//s至s距离为0</span>
+    priority_queue&lt;P,<span class="hljs-built_in">vector</span>&lt;P&gt;,greater&lt;P&gt; &gt;ans;<span class="hljs-comment">//P.first为s至这个点的距离,P.second为从s到的这个点</span>
+    ans.push({<span class="hljs-number">0</span>,s});
+    <span class="hljs-keyword">while</span>(!ans.empty()){
+        P t=ans.top();<span class="hljs-comment">//取最短距离</span>
+        ans.pop();<span class="hljs-comment">//弹出最短距离</span>
+        <span class="hljs-keyword">if</span>(dp[t.second]&lt;t.first)
+            <span class="hljs-keyword">continue</span>;<span class="hljs-comment">//如果弹出的距离不是最新的最短距离，则跳过</span>
+        <span class="hljs-keyword">else</span>{
+            <span class="hljs-comment">//遍历这个点所连的所有边看是否可以更新到所连边的距离</span>
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;a[t.second].<span class="hljs-built_in">size</span>();i++){
+                <span class="hljs-keyword">if</span>(dp[a[t.second][i].to]&gt;t.first+a[t.second][i].val){
+                    dp[a[t.second][i].to]=t.first+a[t.second][i].val;
+                    ans.push({dp[a[t.second][i].to],a[t.second][i].to});
+                }
+            }
+        }
+    }
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </div></code></pre>
@@ -616,6 +704,7 @@ a.swap();<span class="hljs-comment">//和另一个双端队列交换元素 </spa
     <span class="hljs-keyword">return</span> ksm(n,mod<span class="hljs-number">-2</span>,mod);
 }
 </div></code></pre>
+<h3 id="55-%E7%B4%A0%E6%95%B0%E7%AD%9B">5.5. 素数筛</h3>
 <h2 id="6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</h2>
 <h3 id="61-01%E8%83%8C%E5%8C%85">6.1. 01背包</h3>
 <pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
