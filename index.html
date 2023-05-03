@@ -379,7 +379,12 @@ code {
 <li><a href="#12-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.2. 文件操作</a></li>
 </ul>
 </li>
-<li><a href="#2-%E6%8E%92%E5%BA%8F">2. 排序</a></li>
+<li><a href="#2-%E6%8E%92%E5%BA%8F">2. 排序</a>
+<ul>
+<li><a href="#21-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B8%8D%E7%A8%B3%E5%AE%9A">2.1. 快速排序(不稳定)</a></li>
+<li><a href="#22-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%8F%AF%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9">2.2. 归并排序（可求逆序对）</a></li>
+</ul>
+</li>
 <li><a href="#3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">3. 数据结构</a>
 <ul>
 <li><a href="#31-%E5%90%91%E9%87%8F">3.1. 向量</a></li>
@@ -388,6 +393,7 @@ code {
 <li><a href="#34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</a></li>
 <li><a href="#35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</a></li>
 <li><a href="#36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</a></li>
+<li><a href="#37-st%E8%A1%A8">3.7. ST表</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a>
@@ -477,6 +483,53 @@ fclose(<span class="hljs-built_in">stdin</span>);
 fclose(<span class="hljs-built_in">stdout</span>);
 </div></code></pre>
 <h2 id="2-%E6%8E%92%E5%BA%8F">2. 排序</h2>
+<h3 id="21-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B8%8D%E7%A8%B3%E5%AE%9A">2.1. 快速排序(不稳定)</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">qsort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>{
+    <span class="hljs-keyword">if</span>(r&lt;=l)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">int</span> flag=l;<span class="hljs-comment">//哨兵节点</span>
+    <span class="hljs-keyword">int</span> ll=l,rr=r;
+    <span class="hljs-keyword">while</span>(ll&lt;rr){
+        <span class="hljs-comment">//两个循环顺序不能变，确保rr==ll时a[ll]&lt;=a[flag]</span>
+        <span class="hljs-keyword">for</span>(;rr&gt;ll;rr--)
+            <span class="hljs-keyword">if</span>(a[rr]&lt;a[flag]) <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">for</span>(;ll&lt;rr;ll++)
+            <span class="hljs-keyword">if</span>(a[ll]&gt;a[flag]) <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">if</span>(a[ll]&gt;a[flag]&amp;&amp;a[rr]&lt;a[flag])
+            swap(a[ll],a[rr]);
+    }
+    swap(a[flag],a[ll]);
+    qsort(l,ll<span class="hljs-number">-1</span>);
+    qsort(ll+<span class="hljs-number">1</span>,r);
+}
+</div></code></pre>
+<h3 id="22-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%8F%AF%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9">2.2. 归并排序（可求逆序对）</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;a;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">0</span>;<span class="hljs-comment">//逆序对数</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>{
+    <span class="hljs-keyword">if</span>(r&lt;=l)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">int</span> mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;
+    merge_sort(l,mid);
+    merge_sort(mid+<span class="hljs-number">1</span>,r);
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;temp;
+    <span class="hljs-keyword">int</span> ll=l,rr=mid+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(!(ll==mid+<span class="hljs-number">1</span>&amp;&amp;rr==r+<span class="hljs-number">1</span>)){
+        <span class="hljs-keyword">if</span>(ll==mid+<span class="hljs-number">1</span>||(rr&lt;r+<span class="hljs-number">1</span>&amp;&amp;a[rr]&lt;a[ll])){
+            temp.push_back(a[rr]);
+            ans+=mid+<span class="hljs-number">1</span>-ll;<span class="hljs-comment">//求逆序对</span>
+            rr++;
+        }<span class="hljs-keyword">else</span>{
+            temp.push_back(a[ll]);
+            ll++;
+        }
+    }
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;temp.<span class="hljs-built_in">size</span>();i++){
+        a[l]=temp[i];
+        l++;
+    }
+}
+</div></code></pre>
 <h2 id="3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">3. 数据结构</h2>
 <h3 id="31-%E5%90%91%E9%87%8F">3.1. 向量</h3>
 <pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;T&gt;a;
@@ -578,6 +631,26 @@ q.empty();<span class="hljs-comment">//为空返回真 </span>
         <span class="hljs-keyword">if</span>(tall[x]==tall[y])
             tall[x]++;
     }
+}
+</div></code></pre>
+<h3 id="37-st%E8%A1%A8">3.7. ST表</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> p=<span class="hljs-number">20</span>;<span class="hljs-comment">//维护的最大区间，确保2*pow(2,p-1)&gt;=数据规模</span>
+<span class="hljs-keyword">int</span> a[MAX][p+<span class="hljs-number">1</span>];<span class="hljs-comment">//存ST表,从下标1开始存</span>
+<span class="hljs-keyword">int</span> pre[p+<span class="hljs-number">1</span>];
+<span class="hljs-comment">//预处理pre,并对读入的数据进行建表</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    pre[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=p;i++)
+        pre[i]=pre[i<span class="hljs-number">-1</span>]*<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=p;i++){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j+pre[i]<span class="hljs-number">-1</span>&lt;=n;j++)
+            a[j][i]=<span class="hljs-built_in">max</span>(a[j][i<span class="hljs-number">-1</span>],a[j+pre[i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>]);<span class="hljs-comment">//维护从j开始长度为2^i区间的最大值</span>
+    }
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>{
+    <span class="hljs-keyword">int</span> len=log2(r-l+<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(a[l][len],a[r-pre[len]+<span class="hljs-number">1</span>][len]);
 }
 </div></code></pre>
 <h2 id="4-%E5%9B%BE%E8%AE%BA">4. 图论</h2>
