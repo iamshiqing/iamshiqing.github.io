@@ -377,16 +377,23 @@ code {
 </ul>
 </li>
 <li><a href="#12-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.2. 文件操作</a></li>
-<li><a href="#13-%E5%89%8D%E7%BC%80%E5%92%8C">1.3. 前缀和</a>
+<li><a href="#13-%E5%8E%BB%E9%87%8D">1.3. 去重</a></li>
+<li><a href="#14-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">1.4. 常用函数</a>
 <ul>
-<li><a href="#131-%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C">1.3.1. 一维前缀和</a></li>
-<li><a href="#132-%E4%BA%8C%E4%BD%8D%E5%89%8D%E7%BC%80%E5%92%8C">1.3.2. 二位前缀和</a></li>
+<li><a href="#141-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E7%9A%84%E6%95%B0">1.4.1. 求第k小的数</a></li>
+<li><a href="#142-%E5%85%A8%E6%8E%92%E5%88%97">1.4.2. 全排列</a></li>
 </ul>
 </li>
-<li><a href="#14-%E5%B7%AE%E5%88%86">1.4. 差分</a>
+<li><a href="#15-%E5%89%8D%E7%BC%80%E5%92%8C">1.5. 前缀和</a>
 <ul>
-<li><a href="#141-%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86">1.4.1. 一维差分</a></li>
-<li><a href="#142-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86">1.4.2. 二维差分</a></li>
+<li><a href="#151-%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C">1.5.1. 一维前缀和</a></li>
+<li><a href="#152-%E4%BA%8C%E4%BD%8D%E5%89%8D%E7%BC%80%E5%92%8C">1.5.2. 二位前缀和</a></li>
+</ul>
+</li>
+<li><a href="#16-%E5%B7%AE%E5%88%86">1.6. 差分</a>
+<ul>
+<li><a href="#161-%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86">1.6.1. 一维差分</a></li>
+<li><a href="#162-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86">1.6.2. 二维差分</a></li>
 </ul>
 </li>
 </ul>
@@ -445,8 +452,16 @@ code {
 <li><a href="#62-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85">6.2. 完全背包</a></li>
 </ul>
 </li>
-<li><a href="#7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</a></li>
-<li><a href="#8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</a></li>
+<li><a href="#7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</a>
+<ul>
+<li><a href="#71-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.1. 字符串哈希</a></li>
+</ul>
+</li>
+<li><a href="#8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</a>
+<ul>
+<li><a href="#81-%E5%85%B6%E4%BB%96">8.1. 其他</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="1-%E5%B8%B8%E7%94%A8%E6%9D%82%E9%A1%B9">1. 常用杂项</h2>
 <h3 id="11-%E8%AF%BB%E5%85%A5%E8%BE%93%E5%87%BA%E4%BC%98%E5%8C%96">1.1. 读入输出优化</h3>
@@ -497,8 +512,26 @@ freopen(<span class="hljs-string">"ans.out"</span>,<span class="hljs-string">"w"
 fclose(<span class="hljs-built_in">stdin</span>);
 fclose(<span class="hljs-built_in">stdout</span>);
 </div></code></pre>
-<h3 id="13-%E5%89%8D%E7%BC%80%E5%92%8C">1.3. 前缀和</h3>
-<h4 id="131-%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C">1.3.1. 一维前缀和</h4>
+<h3 id="13-%E5%8E%BB%E9%87%8D">1.3. 去重</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;T&gt;a;
+sort(a.<span class="hljs-built_in">begin</span>(),a.<span class="hljs-built_in">end</span>());
+a.erase(unique(a.<span class="hljs-built_in">begin</span>(),a.<span class="hljs-built_in">end</span>()),a.<span class="hljs-built_in">end</span>());
+</div></code></pre>
+<h3 id="14-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">1.4. 常用函数</h3>
+<h4 id="141-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E7%9A%84%E6%95%B0">1.4.1. 求第k小的数</h4>
+<pre class="hljs"><code><div><span class="hljs-comment">//无返回值，只是将第k个放回正确位置</span>
+nth_element();
+<span class="hljs-comment">//vector使用参数（begin(),begin()+k,end())</span>
+<span class="hljs-comment">//普通数组使用参数（数组名，数组名+k，数组名+n)</span>
+</div></code></pre>
+<h4 id="142-%E5%85%A8%E6%8E%92%E5%88%97">1.4.2. 全排列</h4>
+<pre class="hljs"><code><div><span class="hljs-comment">//需提前排序</span>
+next_permutation();
+<span class="hljs-comment">//vector使用参数（begin(),end())</span>
+<span class="hljs-comment">//普通数组使用参数（数组名,数组名+n)</span>
+</div></code></pre>
+<h3 id="15-%E5%89%8D%E7%BC%80%E5%92%8C">1.5. 前缀和</h3>
+<h4 id="151-%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C">1.5.1. 一维前缀和</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100001</span>;
 <span class="hljs-keyword">int</span> a[MAX];<span class="hljs-comment">//存前缀和</span>
 <span class="hljs-comment">//预处理前缀和</span>
@@ -511,7 +544,7 @@ fclose(<span class="hljs-built_in">stdout</span>);
     <span class="hljs-keyword">return</span> a[r]-a[l<span class="hljs-number">-1</span>];
 }
 </div></code></pre>
-<h4 id="132-%E4%BA%8C%E4%BD%8D%E5%89%8D%E7%BC%80%E5%92%8C">1.3.2. 二位前缀和</h4>
+<h4 id="152-%E4%BA%8C%E4%BD%8D%E5%89%8D%E7%BC%80%E5%92%8C">1.5.2. 二位前缀和</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">1001</span>;
 <span class="hljs-keyword">int</span> a[MAX][MAX];<span class="hljs-comment">//存前缀和</span>
 <span class="hljs-comment">//预处理前缀和，n行m列</span>
@@ -525,8 +558,8 @@ fclose(<span class="hljs-built_in">stdout</span>);
     <span class="hljs-keyword">return</span> a[x2][y2]-a[x2][y1<span class="hljs-number">-1</span>]-a[x1<span class="hljs-number">-1</span>][y2]+a[x1<span class="hljs-number">-1</span>][y1<span class="hljs-number">-1</span>];
 }
 </div></code></pre>
-<h3 id="14-%E5%B7%AE%E5%88%86">1.4. 差分</h3>
-<h4 id="141-%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86">1.4.1. 一维差分</h4>
+<h3 id="16-%E5%B7%AE%E5%88%86">1.6. 差分</h3>
+<h4 id="161-%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86">1.6.1. 一维差分</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">1000002</span>;
 <span class="hljs-keyword">int</span> a[MAX];<span class="hljs-comment">//存差分</span>
 <span class="hljs-comment">//预处理差分</span>
@@ -547,7 +580,7 @@ fclose(<span class="hljs-built_in">stdout</span>);
     <span class="hljs-keyword">return</span> ans;
 }
 </div></code></pre>
-<h4 id="142-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86">1.4.2. 二维差分</h4>
+<h4 id="162-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86">1.6.2. 二维差分</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">1002</span>;
 <span class="hljs-keyword">int</span> a[MAX][MAX];<span class="hljs-comment">//存差分</span>
 <span class="hljs-comment">//预处理差分,n行m列</span>
@@ -1020,6 +1053,70 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
 }
 </div></code></pre>
 <h3 id="56-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.6. 高精度</h3>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">lint</span>{</span>
+    <span class="hljs-keyword">int</span> gj[<span class="hljs-number">10010</span>];
+    lint(){
+        <span class="hljs-built_in">memset</span>(gj,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(gj));
+    }
+    lint&amp; <span class="hljs-keyword">operator</span> * (<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; a){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10010</span>;i++)
+            gj[i]*=a;
+        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10010</span>;i++){
+            gj[i]+=j;
+            j=(gj[i])/<span class="hljs-number">10</span>;
+            gj[i]%=<span class="hljs-number">10</span>;
+        }
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    lint <span class="hljs-keyword">operator</span> / (<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; a){
+        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;
+        lint tans;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">10009</span>;i&gt;=<span class="hljs-number">0</span>;i--){
+            j=j*<span class="hljs-number">10</span>+gj[i];
+            tans.gj[i]=j/a;
+            j=j%a;
+        }
+        <span class="hljs-keyword">return</span> tans;
+    }
+    lint&amp; <span class="hljs-keyword">operator</span> + (<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; a){
+        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> t=a;
+        <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(t){
+            gj[i]=gj[i]+j+t%<span class="hljs-number">10</span>;
+            j=gj[i]/<span class="hljs-number">10</span>;
+            gj[i]%=<span class="hljs-number">10</span>;
+            t/=<span class="hljs-number">10</span>;
+            i++;
+        }
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    lint&amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> lint&amp; a){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10010</span>;i++){
+            gj[i]=a.gj[i];
+        }
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> == (<span class="hljs-keyword">const</span> lint&amp; a)<span class="hljs-keyword">const</span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">10009</span>;i&gt;=<span class="hljs-number">0</span>;i--){
+            <span class="hljs-keyword">if</span>(gj[i]!=a.gj[i])
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> lint&amp; a)<span class="hljs-keyword">const</span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">10009</span>;i&gt;=<span class="hljs-number">0</span>;i--){
+            <span class="hljs-keyword">if</span>(gj[i]&gt;a.gj[i])
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">if</span>(gj[i]&lt;a.gj[i])
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    
+};
+</div></code></pre>
 <h2 id="6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</h2>
 <h3 id="61-01%E8%83%8C%E5%8C%85">6.1. 01背包</h3>
 <pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -1057,7 +1154,90 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
 }
 </div></code></pre>
 <h2 id="7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</h2>
+<h3 id="71-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.1. 字符串哈希</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  <span class="hljs-title">Hash</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> p=<span class="hljs-number">131</span>,h=<span class="hljs-number">0</span>;<span class="hljs-comment">//p为进制，p一般取值为131或13331，h为hash值</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)
+        h=h*p+s[i];
+    <span class="hljs-keyword">return</span> h;<span class="hljs-comment">//默认对2^64取模</span>
+
+}
+
+
+<span class="hljs-comment">//同一个字符串多次求字串</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N=<span class="hljs-number">1000005</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> p=<span class="hljs-number">131</span>;
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> h[N],pre[N];<span class="hljs-comment">// h[i]存储字符串前i个字母的哈希值, pre[i]存储 P^i mod 2^64</span>
+<span class="hljs-comment">//初始化</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Hash</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{
+    pre[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
+    h[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++){
+        h[i+<span class="hljs-number">1</span>]=h[i]*p+s[i];
+        pre[i+<span class="hljs-number">1</span>]=pre[i]*p;
+    }
+}
+<span class="hljs-comment">//计算子串s[l-&gt;r]的哈希值,l、r为下标</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>{
+    <span class="hljs-keyword">return</span> h[r+<span class="hljs-number">1</span>]-h[l]*pre[r-l+<span class="hljs-number">1</span>];
+}
+</div></code></pre>
 <h2 id="8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</h2>
+<h3 id="81-%E5%85%B6%E4%BB%96">8.1. 其他</h3>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">//矩阵乘法   案例   斐波那契数列</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod = <span class="hljs-number">1e9</span>+<span class="hljs-number">7</span>;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matrix</span>{</span>
+	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>];
+	matrix(){<span class="hljs-built_in">memset</span>(a,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(a));}
+	matrix <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> matrix &amp;b)<span class="hljs-keyword">const</span> {
+		matrix res;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">2</span>;i++)
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">2</span>;j++)
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>;k&lt;=<span class="hljs-number">2</span>;k++)
+					res.a[i][j]=(res.a[i][j]+a[i][k]*b.a[k][j])%mod;
+		<span class="hljs-keyword">return</span> res;
+	}
+	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sete</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">2</span>;i++)
+			a[i][i]=x;
+	}
+
+};
+<span class="hljs-function">matrix <span class="hljs-title">qpow</span><span class="hljs-params">(matrix m,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n)</span>
+</span>{
+	matrix ans;
+	ans.sete(<span class="hljs-number">1</span>);
+	<span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)
+	{
+		<span class="hljs-keyword">if</span>(n&amp;<span class="hljs-number">1</span>)
+			ans=ans*m;
+		m=m*m;
+		n&gt;&gt;=<span class="hljs-number">1</span>;
+	}
+	<span class="hljs-keyword">return</span> ans;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span>
+</span>{
+	matrix trans,f;
+	trans.a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]=trans.a[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]=trans.a[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+	f.a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]=f.a[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n;
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;n);
+	trans=qpow(trans,n<span class="hljs-number">-2</span>);
+	trans=trans*f;
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld"</span>,trans.a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]%mod);
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+	
+solve();
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+} 
+
+</div></code></pre>
 
 </body>
 </html>
