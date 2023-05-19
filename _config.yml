@@ -1,7 +1,7 @@
 # Site settings 配置站点
-title: '时倾的博客'
+title: 'iamshiqing'
 description: 'ACMer，后端开发者，热爱技术。很高兴能在这里与你分享我对技术和生活的思考。'
-keyword: 'C++，ACM，后端'
+keyword: 'C++，ACM，计算机组成原理，计算机网络，操作系统，数据结构，后端'
 url: 'https://iamshiqing.github.io/' # your host
 
 # if you don't need baseurl, you should leave this value blank.
@@ -17,9 +17,9 @@ footer:
   since: 2023
 
 # Author 配置博主信息
-author: 'Captain'
-nickname: '小队长'
-bio: '前端开发工程师，热爱技术&设计，simple and optimistic'
+author: '时倾'
+nickname: 'iamshiqing'
+bio: 'ACMer，后端开发工程师，热爱技术。'
 avatar: 'assets/img/profile.png'
 
 # Search
@@ -39,8 +39,8 @@ livere_uid: MTAyMC8yODEwMC80Njcz
 reward:
   enable: true
   reward_comment: '真诚赞赏 手有余香'
-  wechatpay: 'https://binarycaptain.github.io/assets/img/wechat.png'
-  alipay: 'https://binarycaptain.github.io/assets/img/alipay.png'
+  wechatpay: 'https://iamshiqing.github.io/assets/img/wechat.png'
+  alipay: 'https://iamshiqing.github.io/assets/img/alipay.png'
 
 # b2t 回到顶部 by Ray-Eldath
 b2t: true
@@ -57,11 +57,11 @@ postPatterns: 'ticTacToe'
 
 # SNS settings 配置社交网站url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
-  email: 'mailto:1098397458@qq.com'
+  email: 'mailto:183805476@qq.com'
   weibo: '//weibo.com/LittleCaptain_y'
   zhihu: '//www.zhihu.com/people/yan-chao-1314/activities'
-  github: '//github.com/BinaryCaptain'
-  jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
+  github: '//github.com/iamshiqing'
+  #jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar
 recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
