@@ -1,8 +1,8 @@
 # Site settings 配置站点
-title: 'captain blog'
-description: '昵称小队长，前端开发者/伪极客/灵魂摄影师，热爱技术&设计。很高兴能在这里与你分享我对技术和生活的思考。'
-keyword: ' 前端, 前端开发, 前端博客, javascript, vuejs, nodejs, 设计, react,angular'
-url: 'https://binarycaptain.github.io/' # your host
+title: '时倾的博客'
+description: 'ACMer，后端开发者，热爱技术。很高兴能在这里与你分享我对技术和生活的思考。'
+keyword: 'C++，ACM，后端'
+url: 'https://iamshiqing.github.io/' # your host
 
 # if you don't need baseurl, you should leave this value blank.
 baseurl: ''
@@ -14,7 +14,7 @@ nav:
 
 # Footer
 footer:
-  since: 2017
+  since: 2023
 
 # Author 配置博主信息
 author: 'Captain'
@@ -29,7 +29,7 @@ search: true
 nightMode: true
 
 # Comments
-disqus: true
+disqus: false
 disqus_url: 'https://liaokeyu.disqus.com/embed.js'
 
 livere: true
