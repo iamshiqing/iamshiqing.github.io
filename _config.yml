@@ -1,68 +1,88 @@
-# Site settings
-title: Xs-Huxblog
-SEOTitle: Xs-HuxBlog
-header-img: img/bg/bg_index.jpg
-email: jsksxs360@163.com
-description: ""
-keyword: ""
-url: "https://jsksxs360.github.io"              # your host, for absolute URL
-baseurl: "/xs-huxblog"                             # for example, '/blog' if your blog hosted on 'host/blog'
+# Site settings 配置站点
+title: 'captain blog'
+description: '昵称小队长，前端开发者/伪极客/灵魂摄影师，热爱技术&设计。很高兴能在这里与你分享我对技术和生活的思考。'
+keyword: ' 前端, 前端开发, 前端博客, javascript, vuejs, nodejs, 设计, react,angular'
+url: 'https://binarycaptain.github.io/' # your host
 
-# SNS settings
-douban_username: 138483825
-weibo_username: jsksxs360
-zhihu_username: jsksxs360
-github_username: jsksxs360
+# if you don't need baseurl, you should leave this value blank.
+baseurl: ''
+
+# Navigation links
+nav:
+  home: '/'
+  tags: '/tags.html'
+
+# Footer
+footer:
+  since: 2017
+
+# Author 配置博主信息
+author: 'Captain'
+nickname: '小队长'
+bio: '前端开发工程师，热爱技术&设计，simple and optimistic'
+avatar: 'assets/img/profile.png'
+
+# Search
+search: true
+
+# Night mode
+nightMode: true
+
+# Comments
+disqus: true
+disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+
+livere: true
+livere_uid: MTAyMC8yODEwMC80Njcz
+
+# Reward 赞赏功能 by Ray-Eldath
+reward:
+  enable: true
+  reward_comment: '真诚赞赏 手有余香'
+  wechatpay: 'https://binarycaptain.github.io/assets/img/wechat.png'
+  alipay: 'https://binarycaptain.github.io/assets/img/alipay.png'
+
+# b2t 回到顶部 by Ray-Eldath
+b2t: true
+
+# Share
+social-share: true
+social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
+
+# theme color 主题皮肤
+theme-color: 'default'  # pink or default
+
+# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
+postPatterns: 'ticTacToe'
+
+# SNS settings 配置社交网站url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
+sns:
+  email: 'mailto:1098397458@qq.com'
+  weibo: '//weibo.com/LittleCaptain_y'
+  zhihu: '//www.zhihu.com/people/yan-chao-1314/activities'
+  github: '//github.com/BinaryCaptain'
+  jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
+# Tags 设置标签
+recommend-tags: true # whether or not display recommend-tags on the sidebar
+recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
 
 # Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+paginate: 6
+paginate_path: 'page:num'
+exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
+
+# Markdown
+markdown: kramdown
 highlighter: rouge
-permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+kramdown:
+  input: GFM
+
+# RSS
+RSS: true
+
+# Permalink
+# See: https://github.com/kaeyleo/jekyll-theme-H2O/issues/35
+permalink: /:year/:month/:day/:title.html
 
 # Plugins
 plugins: [jekyll-paginate]
-
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
-markdown: kramdown
-kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
-
-# Comment settings
-# Valine评论系统
-valine: false
-valine_appId: 2cVvVbG3IswhpPz73iAzdy0R-gzGzoHsz
-valine_appKey: oyPqL9vXtuyfiuLx81crp7Ck
-# Livere来必力
-labili: false                           # whether or not using Livere
-labili_uid: MTAyMC80MjI1Ny8xODgwNA==    # data uid
-
-# Analytics settings
-# Baidu Analytics
-ba_track_id: 07529a93af5fa9f808261a1318c3aba4
-
-# Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "专注IT，乐于分享。"
-sidebar-avatar: /xs-huxblog/img/avatar-xs.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-
-# Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-# Friends
-friends: [
-    {
-        title: "Hux Blog",
-        href: "http://huangxuan.me"
-    },
-    {
-        title: "Xs blog",
-        href: "http://xiaosheng.run"
-    }
-]
