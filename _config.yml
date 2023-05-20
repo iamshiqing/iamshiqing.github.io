@@ -11,7 +11,7 @@ baseurl: ''
 nav:
   home: '/'
   tags: '/tags.html'
-  ACM: 'acm.html'
+  ACM: '/acm.html'
 
 # Footer
 footer:
@@ -31,7 +31,7 @@ nightMode: true
 
 # Comments
 disqus: true
-disqus_url: 'https://iamshiqing.disqus.com/embed.js'
+disqus_url: 'https://liaokeyu.disqus.com/embed.js'
 
 livere: false
 livere_uid: ''
