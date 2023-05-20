@@ -29,11 +29,11 @@ search: true
 nightMode: true
 
 # Comments
-disqus: false
-disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+disqus: true
+disqus_url: 'https://iamshiqing.disqus.com/embed.js'
 
-livere: true
-livere_uid: MTAyMC8yODEwMC80Njcz
+livere: false
+livere_uid: ''
 
 # Reward 赞赏功能 by Ray-Eldath
 reward:
@@ -58,10 +58,10 @@ postPatterns: 'ticTacToe'
 # SNS settings 配置社交网站url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
   email: 'mailto:183805476@qq.com'
-  weibo: '//weibo.com/LittleCaptain_y'
-  zhihu: '//www.zhihu.com/people/yan-chao-1314/activities'
+  zhihu: '//www.zhihu.com/people/shi-qing-47-88-98'
+  juejin: '//juejin.cn/user/1218735171191864'
   github: '//github.com/iamshiqing'
-  #jianshu: '//www.jianshu.com/users/a3a3f4edb72a/timeline'
+  
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar
 recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
