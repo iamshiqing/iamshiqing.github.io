@@ -12,7 +12,7 @@ nav:
   home: '/'
   tags: '/tags.html'
   ACM: '/acm.html'
-  TEST: '/test.html'
+  #TEST: '/test.html'
 
 # Footer
 footer:
