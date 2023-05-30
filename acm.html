@@ -425,6 +425,11 @@ code {
 <li><a href="#413-spfa%E5%8D%95%E6%BA%90--%E8%B4%9F%E6%9D%83%E5%9B%BE">4.1.3. SPFA（单源）--负权图</a></li>
 </ul>
 </li>
+<li><a href="#42-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">4.2. 最小生成树</a>
+<ul>
+<li><a href="#421-kruskal">4.2.1. Kruskal</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#5-%E6%95%B0%E8%AE%BA">5. 数论</a>
@@ -723,8 +728,8 @@ q.empty();<span class="hljs-comment">//为空返回真 </span>
 <span class="hljs-keyword">int</span> root[MAX];<span class="hljs-comment">//存每个点的根节点</span>
 <span class="hljs-keyword">int</span> tall[MAX];<span class="hljs-comment">//存每个节点的高，优化合并</span>
 <span class="hljs-comment">//初始化根节点为自己，高为0</span>
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;MAX;i++)
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)
         root[i]=i,tall[i]=<span class="hljs-number">0</span>;
 }
 <span class="hljs-comment">//递归查找根节点，并更新</span>
@@ -976,6 +981,75 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
         <span class="hljs-keyword">if</span>(is)
             <span class="hljs-keyword">break</span>;
     }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="42-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">4.2. 最小生成树</h3>
+<h4 id="421-kruskal">4.2.1. Kruskal</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>{</span>
+    <span class="hljs-keyword">int</span> v,u,val;<span class="hljs-comment">//u,v为边的两个点，val为边权</span>
+};
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">200005</span>;
+<span class="hljs-keyword">int</span> root[MAX];<span class="hljs-comment">//存每个点的根节点</span>
+<span class="hljs-keyword">int</span> tall[MAX];<span class="hljs-comment">//存每个节点的高，优化合并</span>
+<span class="hljs-comment">//初始化根节点为自己，高为0</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)
+        root[i]=i,tall[i]=<span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">//递归查找根节点，并更新</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">if</span>(n==root[n])
+        <span class="hljs-keyword">return</span> n;
+    <span class="hljs-keyword">else</span> 
+        <span class="hljs-keyword">return</span> root[n]=<span class="hljs-built_in">find</span>(root[n]);
+}
+<span class="hljs-comment">//判断x,y是否在同一个集合</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">issame</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+} 
+<span class="hljs-comment">//合并x，y两个集合</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>{
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tall[x]&lt;tall[y])
+        root[y]=x;
+    <span class="hljs-keyword">else</span>{
+        root[x]=y;
+        <span class="hljs-keyword">if</span>(tall[x]==tall[y])
+            tall[x]++;
+    }
+}
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(edge a,edge b)</span></span>{
+    <span class="hljs-keyword">return</span> a.val&lt;b.val;
+}
+<span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-comment">// n个点，m条边</span>
+    <span class="hljs-keyword">int</span> n,m;
+    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;
+    <span class="hljs-built_in">vector</span>&lt;edge&gt;a(m);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++){
+        <span class="hljs-built_in">cin</span>&gt;&gt;a[i].u&gt;&gt;a[i].v&gt;&gt;a[i].val;
+    }
+    sort(a.<span class="hljs-built_in">begin</span>(),a.<span class="hljs-built_in">end</span>(),cmp);
+    <span class="hljs-comment">// count统计已加入最小生成树的边的数量，ans统计此时最小生成树的总边权</span>
+    <span class="hljs-keyword">int</span> count=<span class="hljs-number">0</span>,ans=<span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 初始化每个点为未加入</span>
+    init(n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++){
+        <span class="hljs-comment">// 如果两个点不在一个集合说明至少有一个点未连通，加入最小生成树</span>
+        <span class="hljs-keyword">if</span>(!issame(a[i].u,a[i].v)){
+            ans+=a[i].val;
+            merge(a[i].v,a[i].u);
+            count++;
+        }
+        
+    }
+    <span class="hljs-comment">// 加入的边数为节点数减一时，所有节点连通</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </div></code></pre>
