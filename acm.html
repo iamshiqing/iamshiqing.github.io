@@ -447,9 +447,10 @@ code {
 <li><a href="#541-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.4.1. 费马小定理</a></li>
 </ul>
 </li>
-<li><a href="#55-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.5. 线性筛</a></li>
-<li><a href="#56-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.6. 分解质因数</a></li>
-<li><a href="#57-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.7. 高精度</a></li>
+<li><a href="#55-%E7%BB%84%E5%90%88%E6%95%B0">5.5. 组合数</a></li>
+<li><a href="#56-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.6. 线性筛</a></li>
+<li><a href="#57-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.7. 分解质因数</a></li>
+<li><a href="#58-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.8. 高精度</a></li>
 </ul>
 </li>
 <li><a href="#6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</a>
@@ -1093,20 +1094,56 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
 </div></code></pre>
 <h3 id="54-%E9%80%86%E5%85%83">5.4. 逆元</h3>
 <h4 id="541-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.4.1. 费马小定理</h4>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p,<span class="hljs-keyword">int</span> mod)</span></span>{
+<p>$$
+n^{-1}=n^{p-2} \ mod \ p
+$$</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod=<span class="hljs-number">1e9</span>+<span class="hljs-number">7</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p)</span></span>{
     <span class="hljs-keyword">if</span>(p==<span class="hljs-number">0</span>)
         <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">int</span> he=ksm(n,p/<span class="hljs-number">2</span>,mod);
+    <span class="hljs-keyword">int</span> he=ksm(n,p/<span class="hljs-number">2</span>);
     <span class="hljs-keyword">if</span>(p%<span class="hljs-number">2</span>)
         <span class="hljs-keyword">return</span> he*he%mod*n%mod;
     <span class="hljs-keyword">else</span>
         <span class="hljs-keyword">return</span> he*he%mod;
 }
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">inv</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> mod)</span></span>{
-    <span class="hljs-keyword">return</span> ksm(n,mod<span class="hljs-number">-2</span>,mod);
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">inv</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">return</span> ksm(n,mod<span class="hljs-number">-2</span>);
 }
 </div></code></pre>
-<h3 id="55-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.5. 线性筛</h3>
+<h3 id="55-%E7%BB%84%E5%90%88%E6%95%B0">5.5. 组合数</h3>
+<p>$$
+C_n^m={n! \over m!\times(n-m)!}
+$$</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long </span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod=<span class="hljs-number">1e9</span>+<span class="hljs-number">7</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p)</span></span>{
+    <span class="hljs-keyword">if</span>(p==<span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> he=ksm(n,p/<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">if</span>(p%<span class="hljs-number">2</span>){
+        <span class="hljs-keyword">return</span> he*he%mod*n%mod;
+    }<span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> he*he%mod;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">inv</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">return</span> ksm(x,mod<span class="hljs-number">-2</span>);
+}
+<span class="hljs-comment">//预处理阶乘</span>
+<span class="hljs-keyword">int</span> pre[<span class="hljs-number">100001</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+    pre[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">100000</span>;i++){
+        pre[i]=i*pre[i<span class="hljs-number">-1</span>]%mod;
+    }
+}
+<span class="hljs-comment">//n为下标，m为上标</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">C</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> m)</span></span>{
+    <span class="hljs-keyword">return</span> pre[n]*inv((pre[m]*pre[n-m])%mod)%mod;
+}
+
+</div></code></pre>
+<h3 id="56-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.6. 线性筛</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000002</span>;
 <span class="hljs-keyword">bool</span> flag[MAX];<span class="hljs-comment">//记录i是否为素数，值0为素数</span>
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;ans;<span class="hljs-comment">//存储筛出的素数</span>
@@ -1124,7 +1161,7 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     }
 }
 </div></code></pre>
-<h3 id="56-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.6. 分解质因数</h3>
+<h3 id="57-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.7. 分解质因数</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">breakdown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
     <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;ans;
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i*i&lt;=n;i++){
@@ -1142,7 +1179,7 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     <span class="hljs-keyword">return</span> ans;
 }
 </div></code></pre>
-<h3 id="57-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.7. 高精度</h3>
+<h3 id="58-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.8. 高精度</h3>
 <pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">lint</span>{</span>
     <span class="hljs-keyword">int</span> gj[<span class="hljs-number">10010</span>];
     lint(){
