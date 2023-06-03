@@ -11,7 +11,7 @@ baseurl: ''
 nav:
   home: '/'
   tags: '/tags.html'
-  ACM: '/acm.html'
+  ACM: '/resource/acm.pdf'
   TODOLIST: '/vue/index.html'
 
 # Footer
