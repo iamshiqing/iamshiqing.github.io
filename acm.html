@@ -761,9 +761,9 @@ q.empty();<span class="hljs-comment">//为空返回真 </span>
     <span class="hljs-keyword">if</span>(x==y)
         <span class="hljs-keyword">return</span>;
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tall[x]&lt;tall[y])
-        root[y]=x;
-    <span class="hljs-keyword">else</span>{
         root[x]=y;
+    <span class="hljs-keyword">else</span>{
+        root[y]=x;
         <span class="hljs-keyword">if</span>(tall[x]==tall[y])
             tall[x]++;
     }
@@ -1028,9 +1028,9 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     <span class="hljs-keyword">if</span>(x==y)
         <span class="hljs-keyword">return</span>;
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tall[x]&lt;tall[y])
-        root[y]=x;
-    <span class="hljs-keyword">else</span>{
         root[x]=y;
+    <span class="hljs-keyword">else</span>{
+        root[y]=x;
         <span class="hljs-keyword">if</span>(tall[x]==tall[y])
             tall[x]++;
     }
