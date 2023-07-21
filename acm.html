@@ -438,6 +438,7 @@ code {
 <li><a href="#42-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">4.2. 最小生成树</a>
 <ul>
 <li><a href="#421-kruskal">4.2.1. Kruskal</a></li>
+<li><a href="#prim">Prim</a></li>
 </ul>
 </li>
 <li><a href="#43-%E4%BA%8C%E5%88%86%E5%9B%BE">4.3. 二分图</a>
@@ -1093,6 +1094,53 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     }
     <span class="hljs-comment">// 加入的边数为节点数减一时，所有节点连通</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h4 id="prim">Prim</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> inf=LLONG_MAX;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">1e6</span>+<span class="hljs-number">10</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> P pair<span class="hljs-meta-string">&lt;int,int&gt;</span></span>
+<span class="hljs-built_in">vector</span>&lt;P&gt;a[MAX];<span class="hljs-comment">//存图</span>
+<span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+	<span class="hljs-keyword">int</span> n,m;<span class="hljs-comment">//n个点，m条边</span>
+	<span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++){
+		<span class="hljs-keyword">int</span> u,v,w;
+		<span class="hljs-built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;
+		a[u].push_back({v,w});
+		a[v].push_back({u,w});
+	}
+	<span class="hljs-keyword">int</span> dis[n+<span class="hljs-number">1</span>];<span class="hljs-comment">//记录最小生成树到每个点的距离</span>
+	<span class="hljs-built_in">fill</span>(dis,dis+n+<span class="hljs-number">1</span>,inf);<span class="hljs-comment">//初始化为inf</span>
+	<span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>,count=<span class="hljs-number">0</span>;
+    <span class="hljs-comment">//ans记录最小生成树的总边权，count记录加入最小生成树的边的数量</span>
+	priority_queue&lt;P,<span class="hljs-built_in">vector</span>&lt;P&gt;,greater&lt;P&gt; &gt;q;
+    <span class="hljs-comment">//优先队列维护未加入最小生成树的点到最小生成树的最短距离</span>
+	dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-comment">//随便加入一个点到最小生成树</span>
+	q.push({<span class="hljs-number">0</span>,<span class="hljs-number">1</span>});
+	<span class="hljs-keyword">while</span>(!q.empty()){
+		P t=q.top();
+		q.pop();
+		<span class="hljs-keyword">if</span>(t.first&gt;dis[t.second]){
+			<span class="hljs-keyword">continue</span>;
+		}<span class="hljs-keyword">else</span>{
+			count++;
+			ans+=t.first;
+			dis[t.second]=<span class="hljs-number">0</span>;
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;a[t.second].<span class="hljs-built_in">size</span>();i++){
+				<span class="hljs-keyword">if</span>(a[t.second][i].second&lt;dis[a[t.second][i].first]){
+					dis[a[t.second][i].first]=a[t.second][i].second;
+					q.push({dis[a[t.second][i].first],a[t.second][i].first});
+				}
+			}
+		}
+	}
+    <span class="hljs-comment">// 加入的边数为节点数减一时，所有节点连通</span>
+
 }
 </div></code></pre>
 <h3 id="43-%E4%BA%8C%E5%88%86%E5%9B%BE">4.3. 二分图</h3>
