@@ -382,7 +382,8 @@ code {
 <ul>
 <li><a href="#111-%E8%A7%A3%E9%99%A4%E6%B5%81%E5%90%8C%E6%AD%A5">1.1.1. 解除流同步</a></li>
 <li><a href="#112-%E5%BF%AB%E8%AF%BB">1.1.2. 快读</a></li>
-<li><a href="#113-%E5%BF%AB%E5%86%99">1.1.3. 快写</a></li>
+<li><a href="#113-%E5%9F%BA%E4%BA%8Efread%E7%9A%84%E5%BF%AB%E8%AF%BB%E4%BC%98%E5%8C%96">1.1.3. 基于fread的快读优化</a></li>
+<li><a href="#114-%E5%BF%AB%E5%86%99">1.1.4. 快写</a></li>
 </ul>
 </li>
 <li><a href="#12-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">1.2. 文件操作</a></li>
@@ -424,6 +425,8 @@ code {
 <li><a href="#36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</a></li>
 <li><a href="#37-st%E8%A1%A8">3.7. ST表</a></li>
 <li><a href="#38-%E7%BA%BF%E6%AE%B5%E6%A0%91">3.8. 线段树</a></li>
+<li><a href="#39-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.9. 一维树状数组</a></li>
+<li><a href="#310-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.10. 二维树状数组</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a>
@@ -451,24 +454,25 @@ code {
 <li><a href="#5-%E6%95%B0%E8%AE%BA">5. 数论</a>
 <ul>
 <li><a href="#51-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">5.1. 最大公约数</a></li>
-<li><a href="#52-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">5.2. 最小公倍数</a></li>
-<li><a href="#53-%E5%BF%AB%E9%80%9F%E5%B9%82">5.3. 快速幂</a>
+<li><a href="#52-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7">5.2. 扩展欧几里德</a></li>
+<li><a href="#53-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">5.3. 最小公倍数</a></li>
+<li><a href="#54-%E5%BF%AB%E9%80%9F%E5%B9%82">5.4. 快速幂</a>
 <ul>
-<li><a href="#531-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.3.1. 第一种实现方法</a></li>
-<li><a href="#532-%E7%AC%AC%E4%BA%8C%E9%92%9F%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.3.2. 第二钟实现方法</a></li>
+<li><a href="#541-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.4.1. 第一种实现方法</a></li>
+<li><a href="#542-%E7%AC%AC%E4%BA%8C%E9%92%9F%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.4.2. 第二钟实现方法</a></li>
 </ul>
 </li>
-<li><a href="#54-%E9%80%86%E5%85%83">5.4. 逆元</a>
+<li><a href="#55-%E9%80%86%E5%85%83">5.5. 逆元</a>
 <ul>
-<li><a href="#541-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.4.1. 费马小定理</a></li>
+<li><a href="#551-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.5.1. 费马小定理</a></li>
 </ul>
 </li>
-<li><a href="#55-%E7%BB%84%E5%90%88%E6%95%B0">5.5. 组合数</a></li>
-<li><a href="#56-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.6. 线性筛</a></li>
-<li><a href="#57-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.7. 分解质因数</a></li>
-<li><a href="#58-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">5.8. 欧拉函数</a></li>
-<li><a href="#59-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.9. 高精度</a></li>
-<li><a href="#510-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82">5.10. 矩阵快速幂</a></li>
+<li><a href="#56-%E7%BB%84%E5%90%88%E6%95%B0">5.6. 组合数</a></li>
+<li><a href="#57-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.7. 线性筛</a></li>
+<li><a href="#58-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.8. 分解质因数</a></li>
+<li><a href="#59-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">5.9. 欧拉函数</a></li>
+<li><a href="#510-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.10. 高精度</a></li>
+<li><a href="#511-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82">5.11. 矩阵快速幂</a></li>
 </ul>
 </li>
 <li><a href="#6-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">6. 动态规划</a>
@@ -479,8 +483,17 @@ code {
 </li>
 <li><a href="#7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</a>
 <ul>
-<li><a href="#71-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.1. 字符串哈希</a></li>
-<li><a href="#72-%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95">7.2. 最小表示法</a></li>
+<li><a href="#71-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">7.1. 常用函数</a>
+<ul>
+<li><a href="#711-c_str">7.1.1. c_str</a></li>
+<li><a href="#712-substr">7.1.2. substr</a></li>
+<li><a href="#713-erase">7.1.3. erase</a></li>
+<li><a href="#714-find">7.1.4. find</a></li>
+<li><a href="#715-insert">7.1.5. insert</a></li>
+</ul>
+</li>
+<li><a href="#72-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.2. 字符串哈希</a></li>
+<li><a href="#73-%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95">7.3. 最小表示法</a></li>
 </ul>
 </li>
 <li><a href="#8-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95">8. 计算几何</a></li>
@@ -509,7 +522,11 @@ code {
     <span class="hljs-keyword">return</span> x*f;
 }
 </div></code></pre>
-<h4 id="113-%E5%BF%AB%E5%86%99">1.1.3. 快写</h4>
+<h4 id="113-%E5%9F%BA%E4%BA%8Efread%E7%9A%84%E5%BF%AB%E8%AF%BB%E4%BC%98%E5%8C%96">1.1.3. 基于fread的快读优化</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> getchar()(p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,1&lt;&lt;21,stdin),p1==p2)?EOF:*p1++)</span>
+<span class="hljs-keyword">char</span> buf[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">21</span>],*p1=buf,*p2=buf;
+</div></code></pre>
+<h4 id="114-%E5%BF%AB%E5%86%99">1.1.4. 快写</h4>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> sta[<span class="hljs-number">35</span>];
     <span class="hljs-keyword">int</span> top = <span class="hljs-number">0</span>;
@@ -901,6 +918,58 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
 
 }
 </div></code></pre>
+<h3 id="39-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.9. 一维树状数组</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">300001</span>;
+<span class="hljs-keyword">int</span> tree[MAX];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">return</span> x&amp;-x;
+}
+<span class="hljs-comment">//单点修改</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> pos=i;pos&lt;MAX;pos+=lowbit(pos))
+        tree[pos]+=x;
+}
+<span class="hljs-comment">//前缀和查询</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> pos=x;pos;pos-=lowbit(pos))
+        ans+=tree[pos];
+    <span class="hljs-keyword">return</span> ans;
+}
+<span class="hljs-comment">//区间查询</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">get</span>(b)-<span class="hljs-built_in">get</span>(a<span class="hljs-number">-1</span>);
+}
+</div></code></pre>
+<h3 id="310-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.10. 二维树状数组</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">2e3</span>+<span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> tree[MAX][MAX];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
+    <span class="hljs-keyword">return</span> x&amp;-x;
+}
+<span class="hljs-comment">//单点修改</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> d)</span></span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i&lt;MAX;i+=lowbit(i)){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j&lt;MAX;j+=lowbit(j)){
+            tree[i][j]+=d;
+        }
+    }
+}
+<span class="hljs-comment">//前缀和查询</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>{
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i;i-=lowbit(i)){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j;j-=lowbit(j)){
+            ans+=tree[i][j];
+        }
+    }
+    <span class="hljs-keyword">return</span> ans;
+}
+<span class="hljs-comment">//区间查询</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x1,<span class="hljs-keyword">int</span> y1,<span class="hljs-keyword">int</span> x2,<span class="hljs-keyword">int</span> y2)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">get</span>(x2,y2)-<span class="hljs-built_in">get</span>(x2,y1<span class="hljs-number">-1</span>)-<span class="hljs-built_in">get</span>(x1<span class="hljs-number">-1</span>,y2)+<span class="hljs-built_in">get</span>(x1<span class="hljs-number">-1</span>,y1<span class="hljs-number">-1</span>);
+}
+</div></code></pre>
 <h2 id="4-%E5%9B%BE%E8%AE%BA">4. 图论</h2>
 <h3 id="41-%E6%9C%80%E7%9F%AD%E8%B7%AF">4.1. 最短路</h3>
 <h4 id="411-floyd%E5%A4%9A%E6%BA%90--%E7%BB%8F%E5%85%B8%E8%8C%83%E5%9B%B4n500">4.1.1. floyd（多源）--经典范围n=500</h4>
@@ -1166,13 +1235,29 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     <span class="hljs-keyword">return</span> a==<span class="hljs-number">0</span>?b:gcd(b%a,a);
 }
 </div></code></pre>
-<h3 id="52-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">5.2. 最小公倍数</h3>
+<h3 id="52-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7">5.2. 扩展欧几里德</h3>
+<p>$$
+ax + by =gcd(a,b)
+$$</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span>&amp; x,<span class="hljs-keyword">int</span>&amp; y)</span></span>{
+    <span class="hljs-keyword">int</span> d=a;
+    <span class="hljs-keyword">if</span>(b!=<span class="hljs-number">0</span>){
+        d=exgcd(b,a%b,y,x);
+        y-=(a/b)*x;
+    }<span class="hljs-keyword">else</span>{
+        x=<span class="hljs-number">1</span>;
+        y=<span class="hljs-number">0</span>;
+    }
+    <span class="hljs-keyword">return</span> d;
+}
+</div></code></pre>
+<h3 id="53-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">5.3. 最小公倍数</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lcm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>{
     <span class="hljs-keyword">return</span> a/gcd(a,b)*b;
 }
 </div></code></pre>
-<h3 id="53-%E5%BF%AB%E9%80%9F%E5%B9%82">5.3. 快速幂</h3>
-<h4 id="531-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.3.1. 第一种实现方法</h4>
+<h3 id="54-%E5%BF%AB%E9%80%9F%E5%B9%82">5.4. 快速幂</h3>
+<h4 id="541-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.4.1. 第一种实现方法</h4>
 <pre class="hljs"><code><div><span class="hljs-comment">//p为负,返回值为按|p|计算结果</span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p)</span></span>{
     <span class="hljs-keyword">if</span>(p==<span class="hljs-number">0</span>)
@@ -1184,7 +1269,7 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
         <span class="hljs-keyword">return</span> he*he;
 }
 </div></code></pre>
-<h4 id="532-%E7%AC%AC%E4%BA%8C%E9%92%9F%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.3.2. 第二钟实现方法</h4>
+<h4 id="542-%E7%AC%AC%E4%BA%8C%E9%92%9F%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">5.4.2. 第二钟实现方法</h4>
 <pre class="hljs"><code><div><span class="hljs-comment">//p不能为负</span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ksm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> p)</span></span>{
     <span class="hljs-keyword">int</span> ans=<span class="hljs-number">1</span>;
@@ -1198,8 +1283,8 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     <span class="hljs-keyword">return</span> ans;
 }
 </div></code></pre>
-<h3 id="54-%E9%80%86%E5%85%83">5.4. 逆元</h3>
-<h4 id="541-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.4.1. 费马小定理</h4>
+<h3 id="55-%E9%80%86%E5%85%83">5.5. 逆元</h3>
+<h4 id="551-%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">5.5.1. 费马小定理</h4>
 <p>$$
 n^{-1}=n^{p-2} \ mod \ p
 $$</p>
@@ -1217,7 +1302,7 @@ $$</p>
     <span class="hljs-keyword">return</span> ksm(n,mod<span class="hljs-number">-2</span>);
 }
 </div></code></pre>
-<h3 id="55-%E7%BB%84%E5%90%88%E6%95%B0">5.5. 组合数</h3>
+<h3 id="56-%E7%BB%84%E5%90%88%E6%95%B0">5.6. 组合数</h3>
 <p>$$
 C_n^m={n! \over m!\times(n-m)!}
 $$</p>
@@ -1249,7 +1334,7 @@ $$</p>
 }
 
 </div></code></pre>
-<h3 id="56-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.6. 线性筛</h3>
+<h3 id="57-%E7%BA%BF%E6%80%A7%E7%AD%9B">5.7. 线性筛</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000002</span>;
 <span class="hljs-keyword">bool</span> flag[MAX];<span class="hljs-comment">//记录i是否为素数，值0为素数</span>
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;ans;<span class="hljs-comment">//存储筛出的素数</span>
@@ -1267,7 +1352,7 @@ $$</p>
     }
 }
 </div></code></pre>
-<h3 id="57-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.7. 分解质因数</h3>
+<h3 id="58-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0">5.8. 分解质因数</h3>
 <p>$$N=p_1^{c_1}p_2^{c_2}...p_m^{c_m}$$</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">breakdown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
     <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;ans;
@@ -1286,7 +1371,7 @@ $$</p>
     <span class="hljs-keyword">return</span> ans;
 }
 </div></code></pre>
-<h3 id="58-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">5.8. 欧拉函数</h3>
+<h3 id="59-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">5.9. 欧拉函数</h3>
 <p>$$N=p_1^{c_1}p_2^{c_2}...p_m^{c_m}$$</p>
 <p>$$
 \varphi(N)=N \times {(p_1-1) \over p_1} \times {(p_2-2) \over p_2} \times ... \times {(p_m-m) \over p_m}
@@ -1310,7 +1395,7 @@ $$</p>
     <span class="hljs-keyword">return</span> ans;
 }
 </div></code></pre>
-<h3 id="59-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.9. 高精度</h3>
+<h3 id="510-%E9%AB%98%E7%B2%BE%E5%BA%A6">5.10. 高精度</h3>
 <pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">lint</span>{</span>
     <span class="hljs-keyword">int</span> gj[<span class="hljs-number">10010</span>];
     lint(){
@@ -1375,7 +1460,7 @@ $$</p>
     
 };
 </div></code></pre>
-<h3 id="510-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82">5.10. 矩阵快速幂</h3>
+<h3 id="511-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82">5.11. 矩阵快速幂</h3>
 <pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod = <span class="hljs-number">998244353</span>;
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matrix</span>{</span>
@@ -1444,7 +1529,35 @@ $$</p>
 }
 </div></code></pre>
 <h2 id="7-%E5%AD%97%E7%AC%A6%E4%B8%B2">7. 字符串</h2>
-<h3 id="71-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.1. 字符串哈希</h3>
+<h3 id="71-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">7.1. 常用函数</h3>
+<h4 id="711-cstr">7.1.1. c_str</h4>
+<pre class="hljs"><code><div>s.c_str();<span class="hljs-comment">//返回C类型字符串（const char *)</span>
+</div></code></pre>
+<h4 id="712-substr">7.1.2. substr</h4>
+<pre class="hljs"><code><div>s.substr((<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">int</span>)num);<span class="hljs-comment">//返回一个子串，从index开始，长num个字符。如果没有指定，将是默认值 string::npos。这样，substr()函数将简单的返回从index开始的剩余的字符串</span>
+</div></code></pre>
+<h4 id="713-erase">7.1.3. erase</h4>
+<pre class="hljs"><code><div>s.erase((<span class="hljs-built_in">string</span>::iterator)pos);<span class="hljs-comment">//删除pos指向的字符, 返回指向下一个字符的迭代器</span>
+s.erase((<span class="hljs-built_in">string</span>::iterator)start,(<span class="hljs-built_in">string</span>::iterator)<span class="hljs-built_in">end</span>);<span class="hljs-comment">//删除从start到end的所有字符(左闭右开), 返回一个迭代器,指向被删除的最后一个字符的下一个位置 </span>
+s.erase((<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">int</span>)num);<span class="hljs-comment">//删除从index索引开始的num个字符, 返回*this,参数index 和 num 有默认值.index=0,num=npos(极大值)</span>
+</div></code></pre>
+<h4 id="714-find">7.1.4. find</h4>
+<pre class="hljs"><code><div>s.<span class="hljs-built_in">find</span>((<span class="hljs-built_in">string</span>)str,(<span class="hljs-keyword">int</span>)index);<span class="hljs-comment">//返回str在字符串中第一次出现的位置（从index开始查找）。如果没找到则返回string::npos(-1)</span>
+s.<span class="hljs-built_in">find</span>((<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)str,(<span class="hljs-keyword">int</span>)index);<span class="hljs-comment">//返回str在字符串中第一次出现的位置（从index开始查找）。如果没找到则返回string::npos(-1)</span>
+s.<span class="hljs-built_in">find</span>((<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)str,(<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">int</span>)length);<span class="hljs-comment">//返回str在字符串中第一次出现的位置（从index开始查找，长度为length）。如果没找到就返回string::npos(-1)</span>
+s.<span class="hljs-built_in">find</span>((<span class="hljs-keyword">char</span>)ch,(<span class="hljs-keyword">int</span>)index);<span class="hljs-comment">//返回字符ch在字符串中第一次出现的位置（从index开始查找）。如果没找到就返回string::npos(-1)</span>
+</div></code></pre>
+<h4 id="715-insert">7.1.5. insert</h4>
+<pre class="hljs"><code><div>s.insert((<span class="hljs-built_in">string</span>::iterator)i, (<span class="hljs-keyword">char</span>)ch);<span class="hljs-comment">//在迭代器i表示的位置前面插入一个字符ch</span>
+s.insert((<span class="hljs-keyword">int</span>)index,(<span class="hljs-built_in">string</span>)str);<span class="hljs-comment">//在字符串的位置index插入字符串str</span>
+s.insert((<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)str);<span class="hljs-comment">//在字符串的位置index插入字符串str</span>
+s.insert((<span class="hljs-keyword">int</span>)index1,(<span class="hljs-built_in">string</span>)str,(<span class="hljs-keyword">int</span>)index2,(<span class="hljs-keyword">int</span>)num);<span class="hljs-comment">//在字符串的位置index1插入字符串str的子串(从index2开始，长num个字符)</span>
+s.insert((<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)str,(<span class="hljs-keyword">int</span>)num);<span class="hljs-comment">//在字符串的位置index插入字符串str的num个字符</span>
+s.insert((<span class="hljs-keyword">int</span>)index,(<span class="hljs-keyword">int</span>)num,(<span class="hljs-keyword">char</span>)ch);<span class="hljs-comment">//在字符串的位置index插入num个字符ch的拷贝</span>
+s.insert((<span class="hljs-built_in">string</span>::iterator)i,(<span class="hljs-keyword">int</span>)num,(<span class="hljs-keyword">char</span>)ch);<span class="hljs-comment">//在迭代器i表示的位置前面插入num个字符ch的拷贝</span>
+s.insert((<span class="hljs-built_in">string</span>::iterator)i,(<span class="hljs-built_in">string</span>::iterator)start,(<span class="hljs-built_in">string</span>::iterator)<span class="hljs-built_in">end</span>);<span class="hljs-comment">//在迭代器i表示的位置前面插入一段字符，从start开始，以end结束</span>
+</div></code></pre>
+<h3 id="72-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C">7.2. 字符串哈希</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  <span class="hljs-title">Hash</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{
     <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> p=<span class="hljs-number">131</span>,h=<span class="hljs-number">0</span>;<span class="hljs-comment">//p为进制，p一般取值为131或13331，h为hash值</span>
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)
@@ -1472,7 +1585,7 @@ $$</p>
     <span class="hljs-keyword">return</span> h[r+<span class="hljs-number">1</span>]-h[l]*pre[r-l+<span class="hljs-number">1</span>];
 }
 </div></code></pre>
-<h3 id="72-%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95">7.2. 最小表示法</h3>
+<h3 id="73-%E6%9C%80%E5%B0%8F%E8%A1%A8%E7%A4%BA%E6%B3%95">7.3. 最小表示法</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getmin</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{
     <span class="hljs-keyword">int</span> len=s.length();
     s+=s;
