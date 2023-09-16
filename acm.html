@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-  <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-          inlineMath: [['$','$']]
-          }
-      });
-  </script>
 <title>ACM模板</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
@@ -419,14 +410,16 @@ code {
 <ul>
 <li><a href="#31-%E5%90%91%E9%87%8F">3.1. 向量</a></li>
 <li><a href="#32-%E6%A0%88">3.2. 栈</a></li>
-<li><a href="#33-%E9%98%9F%E5%88%97">3.3. 队列</a></li>
-<li><a href="#34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</a></li>
-<li><a href="#35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</a></li>
-<li><a href="#36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</a></li>
-<li><a href="#37-st%E8%A1%A8">3.7. ST表</a></li>
-<li><a href="#38-%E7%BA%BF%E6%AE%B5%E6%A0%91">3.8. 线段树</a></li>
-<li><a href="#39-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.9. 一维树状数组</a></li>
-<li><a href="#310-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.10. 二维树状数组</a></li>
+<li><a href="#33-%E5%8D%95%E8%B0%83%E6%A0%88">3.3. 单调栈</a></li>
+<li><a href="#34-%E9%98%9F%E5%88%97">3.4. 队列</a></li>
+<li><a href="#35-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.5. 双端队列</a></li>
+<li><a href="#36-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97">3.6. 单调队列</a></li>
+<li><a href="#37-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.7. 优先队列</a></li>
+<li><a href="#38-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.8. 并查集</a></li>
+<li><a href="#39-st%E8%A1%A8">3.9. ST表</a></li>
+<li><a href="#310-%E7%BA%BF%E6%AE%B5%E6%A0%91">3.10. 线段树</a></li>
+<li><a href="#311-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.11. 一维树状数组</a></li>
+<li><a href="#312-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.12. 二维树状数组</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%9B%BE%E8%AE%BA">4. 图论</a>
@@ -744,7 +737,15 @@ a.top();<span class="hljs-comment">//返回栈顶元素</span>
 a.empty();<span class="hljs-comment">//栈为空返回真</span>
 a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回栈内元素数量</span>
 </div></code></pre>
-<h3 id="33-%E9%98%9F%E5%88%97">3.3. 队列</h3>
+<h3 id="33-%E5%8D%95%E8%B0%83%E6%A0%88">3.3. 单调栈</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt;a;
+<span class="hljs-comment">//x为要被插入的数据，a.top()递增</span>
+<span class="hljs-keyword">while</span>(!a.empty()&amp;&amp;x&gt;=a.top()){
+    a.pop();
+}
+a.push(x);
+</div></code></pre>
+<h3 id="34-%E9%98%9F%E5%88%97">3.4. 队列</h3>
 <pre class="hljs"><code><div><span class="hljs-built_in">queue</span>&lt;T&gt;q;
 q.push();<span class="hljs-comment">//入队</span>
 q.pop();<span class="hljs-comment">//出队</span>
@@ -753,7 +754,7 @@ q.back();<span class="hljs-comment">//返回队尾元素</span>
 q.empty();<span class="hljs-comment">//队为空返回真</span>
 q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回队内元素数量</span>
 </div></code></pre>
-<h3 id="34-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.4. 双端队列</h3>
+<h3 id="35-%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97">3.5. 双端队列</h3>
 <pre class="hljs"><code><div><span class="hljs-built_in">deque</span>&lt;T&gt;a; 
 a.assign();<span class="hljs-comment">//赋值</span>
 a.at();<span class="hljs-comment">//返回指定的元素 </span>
@@ -775,7 +776,15 @@ a.resize();<span class="hljs-comment">//改变大小 </span>
 a.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回元素个数 </span>
 a.swap();<span class="hljs-comment">//和另一个双端队列交换元素 </span>
 </div></code></pre>
-<h3 id="35-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.5. 优先队列</h3>
+<h3 id="36-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97">3.6. 单调队列</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt;a;
+<span class="hljs-comment">//x为要插入的数据，从a.front()递增</span>
+<span class="hljs-keyword">while</span>(!a.empty()&amp;&amp;x&lt;=a.back()){
+    a.pop_back();
+}
+a.push(x);
+</div></code></pre>
+<h3 id="37-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">3.7. 优先队列</h3>
 <pre class="hljs"><code><div>priority_queue&lt;T&gt;q;<span class="hljs-comment">//降序,即top()为最大值</span>
 priority_queue&lt;T,<span class="hljs-built_in">vector</span>&lt;T&gt;,greater&lt;T&gt; &gt;q;<span class="hljs-comment">//升序,即top()为最小值</span>
 q.top();<span class="hljs-comment">//返回优先级最高的元素</span>
@@ -784,7 +793,7 @@ q.pop();<span class="hljs-comment">//删除第一个元素</span>
 q.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//返回元素个数 </span>
 q.empty();<span class="hljs-comment">//为空返回真 </span>
 </div></code></pre>
-<h3 id="36-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.6. 并查集</h3>
+<h3 id="38-%E5%B9%B6%E6%9F%A5%E9%9B%86">3.8. 并查集</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000</span>;
 <span class="hljs-keyword">int</span> root[MAX];<span class="hljs-comment">//存每个点的根节点</span>
 <span class="hljs-keyword">int</span> tall[MAX];<span class="hljs-comment">//存每个节点的高，优化合并</span>
@@ -819,7 +828,7 @@ q.empty();<span class="hljs-comment">//为空返回真 </span>
     }
 }
 </div></code></pre>
-<h3 id="37-st%E8%A1%A8">3.7. ST表</h3>
+<h3 id="39-st%E8%A1%A8">3.9. ST表</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">100000</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> p=<span class="hljs-number">20</span>;<span class="hljs-comment">//维护的最大区间，确保2*pow(2,p-1)&gt;=数据规模</span>
 <span class="hljs-keyword">int</span> a[MAX][p+<span class="hljs-number">1</span>];<span class="hljs-comment">//存ST表,从下标1开始存</span>
@@ -839,7 +848,7 @@ q.empty();<span class="hljs-comment">//为空返回真 </span>
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(a[l][len],a[r-pre[len]+<span class="hljs-number">1</span>][len]);
 }
 </div></code></pre>
-<h3 id="38-%E7%BA%BF%E6%AE%B5%E6%A0%91">3.8. 线段树</h3>
+<h3 id="310-%E7%BA%BF%E6%AE%B5%E6%A0%91">3.10. 线段树</h3>
 <pre class="hljs"><code><div><span class="hljs-comment">//线段树维护区间最大最小值  first为最大值在a数组中下标  second为最小值在a数组中下标 modify直接修改a数组</span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">300001</span>;
 <span class="hljs-keyword">int</span> a[MAX];<span class="hljs-comment">//原数组</span>
@@ -918,7 +927,7 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
 
 }
 </div></code></pre>
-<h3 id="39-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.9. 一维树状数组</h3>
+<h3 id="311-%E4%B8%80%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.11. 一维树状数组</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">300001</span>;
 <span class="hljs-keyword">int</span> tree[MAX];
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
@@ -941,7 +950,7 @@ P tree[<span class="hljs-number">4</span>*MAX];<span class="hljs-comment">//线�
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">get</span>(b)-<span class="hljs-built_in">get</span>(a<span class="hljs-number">-1</span>);
 }
 </div></code></pre>
-<h3 id="310-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.10. 二维树状数组</h3>
+<h3 id="312-%E4%BA%8C%E7%BB%B4%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">3.12. 二维树状数组</h3>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">2e3</span>+<span class="hljs-number">10</span>;
 <span class="hljs-keyword">int</span> tree[MAX][MAX];
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{
