@@ -17,11 +17,7 @@ tags: Codeforces 题解
 ### 思路：
 <p>数很小在100以内，直接开一个桶，把每次读入放进去，检查一遍只要桶里有i的数量大于i-1的数量，即不合法。</p>
 
-```c++
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(){};
-```
-
-### AC代码：
+## AC代码：
 ```cpp
 #include<bits/stdc++.h>
 #define int long long
