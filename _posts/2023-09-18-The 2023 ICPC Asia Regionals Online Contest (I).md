@@ -18,7 +18,7 @@ tags: ICPC 网络赛 题解
 <p>对n个程序的运行时间取max，max/k向上取整，如果小于2，直接输出2</p>
 
 ### AC代码：
-```c-like
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
