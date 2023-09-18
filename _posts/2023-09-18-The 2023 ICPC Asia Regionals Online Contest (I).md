@@ -42,8 +42,8 @@ int main(){
 ### 思路：
 <p>先对两场的排名进行去重，然后依次从第一场和第二场各取出一所学校，如果未加入最终排名，则加入，否则跳过，有一场取完后就只从另一场取，直到取完所有学校</p>
  
-<pre><code class="language-css rainbow-braces match-braces no-brace-hover">p { color: red }</code></pre>
-<pre><code class="language-css match-braces">p { color: red }</code></pre>
+<pre><code class="language-css rainbow-braces match-braces no-brace-hover">https://iamshiqing.github.io/2023/09/18/The-2023-ICPC-Asia-Regionals-Online-Contest-(I).html</code></pre>
+
 
 ### AC代码：
 ```cpp
