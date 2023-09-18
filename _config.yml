@@ -28,7 +28,7 @@ avatar: 'assets/img/profile.png'
 search: true
 
 # Night mode
-nightMode: true
+nightMode: false
 
 # Comments
 disqus: true
@@ -75,7 +75,7 @@ exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'R
 
 # Markdown
 markdown: kramdown
-highlighter: rouge
+highlighter: 
 kramdown:
   input: GFM
 
