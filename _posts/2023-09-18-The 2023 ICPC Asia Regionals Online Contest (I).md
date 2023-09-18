@@ -18,7 +18,7 @@ tags: ICPC 网络赛 题解
 <p>对n个程序的运行时间取max，max/k向上取整，如果小于2，直接输出2</p>
 
 ### AC代码：
-```cpp
+```clike
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
@@ -43,7 +43,7 @@ int main(){
 <p>先对两场的排名进行去重，然后依次从第一场和第二场各取出一所学校，如果未加入最终排名，则加入，否则跳过，有一场取完后就只从另一场取，直到取完所有学校</p>
 
 ### AC代码：
-```c++
+```clike
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
