@@ -17,12 +17,8 @@ tags: ICPC 网络赛 题解
 ### 思路：
 <p>对n个程序的运行时间取max，max/k向上取整，如果小于2，直接输出2</p>
 
- ```css
-	p { color: red }
- ```
-
 ### AC代码：
-```c++
+```c
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
