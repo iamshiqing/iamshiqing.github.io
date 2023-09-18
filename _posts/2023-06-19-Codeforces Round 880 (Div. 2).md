@@ -18,7 +18,7 @@ tags: Codeforces 题解
 <p>数很小在100以内，直接开一个桶，把每次读入放进去，检查一遍只要桶里有i的数量大于i-1的数量，即不合法。</p>
 
 ### AC代码：
-```c++
+```cpp
 #include<bits/stdc++.h>
 #define int long long
 using namespace std;
@@ -59,7 +59,7 @@ signed main(){
 <p>贪心，给每个人都尽可能少发，g为奇时，每个人最多少发g/2,g为偶时，每个人最多少发g/2-1,知道每个人了就可以知道总共少发了多少，但是当总数%g！=0时，需要补齐到g,所以答案为总数/g*g（注意特殊情况，减少的不能大于k*g）。</p>
 
 ### AC代码：
-```c++
+```cpp
 #include<bits/stdc++.h>
 #define int long long 
 using namespace std;
@@ -94,7 +94,7 @@ signed main(){
 <p>枚举第一个数，根据第三个数的区间和第一个数算出对应的第二个数的区间，统计满足式子的总数，等于k时输出结果，枚举完小于k输出-1。</p>
 
 ### AC代码：
-```c++
+```cpp
 #include<bits/stdc++.h>
 #define int long long
 using namespace std;
