@@ -4,7 +4,7 @@ title: 'Codeforces Round 880 (Div. 2)'
 subtitle: 'Codeforces Round 880 (Div. 2) A-C题解'
 date: 2023-06-19
 categories: CF题解
-cover: 'assets/img/cf880.png'
+cover: 'assets/img/codeforces.png'
 tags: Codeforces 题解
 ---
 
