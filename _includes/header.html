@@ -37,7 +37,13 @@
                         <div class="h2">
 
                             <span id="subtitle" data-typed-text="一款 Material Design 风格的 Hexo 主题"></span>
-
+                            <script>
+                                var subtitle = document.getElementById('subtitle');
+                                var typed = new Typed(subtitle, {
+                                  strings: [subtitle.getAttribute('data-typed-text')],
+                                  typeSpeed: 50
+                                });
+                              </script>
                         </div>
 
 
