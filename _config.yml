@@ -9,8 +9,8 @@ baseurl: ''
 
 # Navigation links
 nav:
-  home: '/'
-  tags: '/tags.html'
+  HOME: '/'
+  TAGS: '/tags.html'
   ACM: '/acm.html'
   TODOLIST: '/vue/index.html'
 
