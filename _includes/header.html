@@ -1,4 +1,4 @@
-<header>
+ <!-- <header>
     <div class="header-inner" style="height: 100vh;">
         <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container">
@@ -12,7 +12,7 @@
                     <div class="animated-icon"><span></span><span></span><span></span></div>
                 </button>
 
-                <!-- Collapsible content -->
+        
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto text-center">
 
@@ -58,4 +58,14 @@
             </div>
         </div>
     </div>
+</header>  -->
+<header class="g-header">
+    <i id="menu-toggle" class="iconfont icon-menu"></i>
+    <nav class="g-nav">
+        <ul>
+            {% for i in site.nav %}
+            <li><a href="{{ i[1] }}">{{ i[0] }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
 </header>
