@@ -18,16 +18,16 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequ
 
 Fluid.utils = {
 
-  // listenScroll: function(callback) {
-  //   var dbc = new Debouncer(callback);
-  //   window.addEventListener('scroll', dbc, false);
-  //   dbc.handleEvent();
-  //   return dbc;
-  // },
+  listenScroll: function(callback) {
+    var dbc = new Debouncer(callback);
+    window.addEventListener('scroll', dbc, false);
+    dbc.handleEvent();
+    return dbc;
+  },
 
-  // unlistenScroll: function(callback) {
-  //   window.removeEventListener('scroll', callback);
-  // },
+  unlistenScroll: function(callback) {
+    window.removeEventListener('scroll', callback);
+  },
 
   listenDOMLoaded(callback) {
     if (document.readyState !== 'loading') {
