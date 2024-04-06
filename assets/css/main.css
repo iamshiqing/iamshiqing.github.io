@@ -700,11 +700,6 @@ sup > a::before,
 }
 #toc {
   visibility: visible;
-  position: fixed;
-  left: 0;
-  top: 50%; /* 控制目录垂直居中 */
-  transform: translateY(-50%);
-  /* 其他样式，如宽度、背景色等 */
 
 }
 .toc-header {
