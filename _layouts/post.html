@@ -189,14 +189,15 @@
   <noscript>为正常使用评论功能请激活JavaScript。</noscript>
   <script src="/assets/js/prism.js"></script>
   <script src="/assets/js/index.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script> -->
   <script>
     Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
       var toc = jQuery('#toc');
+      window.alert("这是一个弹出窗口！");
       if (toc.length === 0 || !window.tocbot) { return; }
       var boardCtn = jQuery('#board-ctn');
       var boardTop = boardCtn.offset().top;
-  
+      window.alert("这是一个弹出窗口！");
       window.tocbot.init(Object.assign({
         tocSelector     : '#toc',
         contentSelector : '.markdown-body',
