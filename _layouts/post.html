@@ -193,11 +193,11 @@
   <script>
     Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
       var toc = jQuery('#toc');
-      window.alert("这是一个弹出窗口！");
+      
       if (toc.length === 0 || !window.tocbot) { return; }
+      window.alert("这是一个弹出窗口！");
       var boardCtn = jQuery('#board-ctn');
       var boardTop = boardCtn.offset().top;
-      window.alert("这是一个弹出窗口！");
       window.tocbot.init(Object.assign({
         tocSelector     : '#toc',
         contentSelector : '.markdown-body',
