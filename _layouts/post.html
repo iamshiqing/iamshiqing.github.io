@@ -190,7 +190,43 @@
   <script src="/assets/js/prism.js"></script>
   <script src="/assets/js/index.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script>
-
+  <script>
+    Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+      var toc = jQuery('#toc');
+      if (toc.length === 0 || !window.tocbot) { return; }
+      var boardCtn = jQuery('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+  
+      window.tocbot.init(Object.assign({
+        tocSelector     : '#toc',
+        contentSelector : '.markdown-body',
+        linkClass       : 'tocbot-link',
+        activeLinkClass : 'tocbot-active-link',
+        listClass       : 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth    : true,
+        includeTitleTags: true,
+        headingsOffset  : -boardTop,
+      }, CONFIG.toc));
+      if (toc.find('.toc-list-item').length > 0) {
+        toc.css('visibility', 'visible');
+      }
+  
+      Fluid.events.registerRefreshCallback(function() {
+        if ('tocbot' in window) {
+          tocbot.refresh();
+          var toc = jQuery('#toc');
+          if (toc.length === 0 || !tocbot) {
+            return;
+          }
+          if (toc.find('.toc-list-item').length > 0) {
+            toc.css('visibility', 'visible');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
