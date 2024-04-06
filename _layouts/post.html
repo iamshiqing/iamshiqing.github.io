@@ -192,17 +192,15 @@
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
   <script>
   $(document).ready(function() {
-      // 遍历页面中的所有 h2 和 h3 标题
-      $('article.markdown-body').find('h2, h3').each(function(index) {
-          // 生成目录项
-          var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
-          // 添加到目录列表中
-          $('#toc').append(listItem);
-          // 设置标题的 ID，以便在目录项中进行链接
-          $(this).attr('id', 'section' + index);
-      });
-      alert("JavaScript 代码执行了！");
-  });
+    console.log("开始生成目录...");
+    $('article.markdown-body').find('h2, h3').each(function(index) {
+        console.log("找到标题：" + $(this).text());
+        var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
+        $('#toc').append(listItem);
+        $(this).attr('id', 'section' + index);
+    });
+    console.log("目录生成完成。");
+});
   </script>
 </body>
 
