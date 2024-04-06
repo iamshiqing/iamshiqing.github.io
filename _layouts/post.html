@@ -47,6 +47,25 @@
     </div>
     {% endif %}
   </div>
+  <div id="sidebar">
+    <h3>目录</h3>
+    <ul id="toc"></ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // 遍历页面中的所有 h2 和 h3 标题
+    $('article.markdown-body').find('h2, h3').each(function(index) {
+        // 生成目录项
+        var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
+        // 添加到目录列表中
+        $('#toc').append(listItem);
+        // 设置标题的 ID，以便在目录项中进行链接
+        $(this).attr('id', 'section' + index);
+    });
+});
+</script>
 
   <section class="author-detail">
     <section class="post-footer-item author-card">
