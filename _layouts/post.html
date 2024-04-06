@@ -27,19 +27,19 @@
     <div class="post-cover" style="background: url('{{ page.cover }}') center no-repeat; background-size: cover;">
       {% endif %}
   </header>
-
-  <div class="post-content visible">
-    {% if page.subtitle %}
-    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
-    {% endif %}
-
-    <aside id="sidebar">
+  <aside id="sidebar">
       <div>
       <h3>目录</h3>
       <ul id="toc"></ul>
       
       </div>
-    </aside>
+  </aside>
+  <div class="post-content visible">
+    {% if page.subtitle %}
+    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    
 
     <article  class="markdown-body">
       {{ page.content }}
