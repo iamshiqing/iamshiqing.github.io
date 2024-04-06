@@ -27,12 +27,14 @@
     <div class="post-cover" style="background: url('{{ page.cover }}') center no-repeat; background-size: cover;">
       {% endif %}
   </header>
-  
-  <div class="post-content visible">
-    <aside id="sidebar">
-      <h3>目录</h3>
-      <ul id="toc"></ul>
+  <div class="side-col d-none d-lg-block col-lg-2">
+    <aside class="sidebar d-none d-xl-block" style="margin-right:-1rem;z-index:-1"><ins class="adsbygoogle" style="display:flex;justify-content:center;min-width:160px;max-width:300px;width:100%;height:600px;position:sticky;top:2rem" data-ad-client="ca-pub-2938778520580915" data-ad-slot="5354067759"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+        <h3>目录</h3>
+        <ul id="toc"></ul>
     </aside>
+  </div>
+  <div class="post-content visible">
+    
     {% if page.subtitle %}
     <h2 class="post-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
