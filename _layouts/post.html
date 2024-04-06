@@ -190,7 +190,7 @@
   <script src="/assets/js/prism.js"></script>
   <script src="/assets/js/index.min.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-  <script>
+  <!-- <script>
   $(document).ready(function() {
     $('article.markdown-body').find('h1, h2').each(function(index) {
         var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
@@ -198,7 +198,20 @@
         $(this).attr('id', 'section' + index);
     });
 });
-  </script>
+  </script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script>
+<script>
+tocbot.init({
+  // Where to render the table of contents.
+  tocSelector: 'toc',
+  // Where to grab the headings to build the table of contents.
+  contentSelector: 'article.markdown-body',
+  // Which headings to grab inside of the contentSelector element.
+  headingSelector: 'h1, h2, h3',
+  // For headings inside relative or absolute positioned containers within content.
+  hasInnerContainers: true,
+});
+</script>
 </body>
 
 </html>
