@@ -70,7 +70,7 @@ Fluid.events = {
       return;
     }
     scrollbar.on('click', function() {
-      Fluid.utils.scrollToElement('#iboard', -jQuery('#navbar').height());
+      Fluid.utils.scrollToElement('#board', -jQuery('#navbar').height());
     });
   },
 

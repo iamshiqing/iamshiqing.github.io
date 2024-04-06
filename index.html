@@ -32,8 +32,8 @@ header-img: assets/img/11.jpeg
             </div>
 </div>
 </div>
-<main class="g-container home-content">
-    <div id="iboard" class="article-list">
+<main id="board" class="g-container home-content">
+    <div class="article-list">
         {% for post in paginator.posts %}
             <article class="article-item">
                 {% if post.cover %}
