@@ -8,7 +8,7 @@ header-img: assets/img/11.jpeg
 
 {% include header.html %}
 <div class="header-inner" style="height: 100vh;">
-<div id="banner" class="banner" parallax=false
+<div id="banner" class="banner" parallax="false"
             style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
             <div class="full-bg-img">
                 <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -32,8 +32,8 @@ header-img: assets/img/11.jpeg
             </div>
 </div>
 </div>
-<main id="board" class="g-container home-content">
-    <div  class="article-list">
+<main  class="g-container home-content">
+    <div id="board" class="article-list">
         {% for post in paginator.posts %}
             <article class="article-item">
                 {% if post.cover %}
