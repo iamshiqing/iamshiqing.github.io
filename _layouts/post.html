@@ -195,8 +195,7 @@
       var toc = jQuery('#toc');
       
       if (toc.length === 0 || !window.tocbot) { return; }
-      window.alert("这是一个弹出窗口！");
-      var boardCtn = jQuery('#board-ctn');
+      var boardCtn = jQuery('#toc');
       var boardTop = boardCtn.offset().top;
       window.tocbot.init(Object.assign({
         tocSelector     : '#toc',
@@ -211,6 +210,7 @@
         headingsOffset  : -boardTop,
       }, CONFIG.toc));
       if (toc.find('.toc-list-item').length > 0) {
+        window.alert("这是一个弹出窗口！");
         toc.css('visibility', 'visible');
       }
   
