@@ -4,7 +4,7 @@ title: 'The 2023 ICPC Asia Regionals Online Contest (I)'
 subtitle: 'The 2023 ICPC Asia Regionals Online Contest (I)部分题解'
 date: 2023-09-18
 categories: 网络赛题解
-cover: 'assets/img/2023_icpc_online1.png'
+cover: 'https://iamshiqing.github.io/assets/img/2023_icpc_online1.png'
 tags: ICPC 网络赛 题解
 ---
 

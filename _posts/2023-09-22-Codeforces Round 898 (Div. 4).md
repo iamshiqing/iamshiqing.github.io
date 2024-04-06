@@ -4,7 +4,7 @@ title: 'Codeforces Round 898 (Div. 4)'
 subtitle: 'Codeforces Round 898 (Div. 4) A-H题解'
 date: 2023-09-22
 categories: CF题解
-cover: 'assets/img/codeforces.png'
+cover: 'https://iamshiqing.github.io/assets/img/codeforces.png'
 tags: Codeforces 题解
 ---
 
