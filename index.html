@@ -32,8 +32,8 @@ header-img: assets/img/11.jpeg
             </div>
 </div>
 </div>
-<main  class="g-container home-content">
-    <div id="board">
+<main  id="iboard" class="g-container home-content">
+    
     <div  class="article-list">
         {% for post in paginator.posts %}
             <article class="article-item">
@@ -116,6 +116,5 @@ header-img: assets/img/11.jpeg
         {% endif %}
 
     </aside>
-    </div>
 </main>
 {% include footer.html %}
