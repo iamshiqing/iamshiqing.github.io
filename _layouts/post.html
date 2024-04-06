@@ -27,36 +27,39 @@
     <div class="post-cover" style="background: url('{{ page.cover }}') center no-repeat; background-size: cover;">
       {% endif %}
   </header>
-<div>
-    <div>
-    <aside id="sidebar">
-      <h3>目录</h3>
-      <ul id="toc"></ul>
-    </aside>
+  
+  <div class="post-content visible" style="display: flex;">
+    <div style="width: 200px;">
+      <aside id="sidebar">
+        <h3>目录</h3>
+        <ul id="toc"></ul>
+      </aside>
     </div>
-    <div>
-    {% if page.subtitle %}
-    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
-    {% endif %}
+    <div style="flex-grow: 1;">
+      {% if page.subtitle %}
+      <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+      {% endif %}
 
-    
+      
 
-    <article  class="markdown-body">
-      {{ page.content }}
-    </article>
+      <article  class="markdown-body">
+        {{ page.content }}
+      </article>
 
-    {% if site.reward.enable %}
-      {% include reward.html %}
-    {% endif %}
 
-    {% if site.social-share %}
-    <div class="social-share-wrapper">
-      <div class="social-share"></div>
-    </div>
-    {% endif %}
+
+      {% if site.reward.enable %}
+        {% include reward.html %}
+      {% endif %}
+
+      {% if site.social-share %}
+      <div class="social-share-wrapper">
+        <div class="social-share"></div>
+      </div>
+      {% endif %}
     </div>
   </div>
-  
+
   
 
 
