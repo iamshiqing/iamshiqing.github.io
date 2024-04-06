@@ -193,14 +193,11 @@
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
   <script>
   $(document).ready(function() {
-    console.log("开始生成目录...");
-    $('article.markdown-body').find('h2, h3').each(function(index) {
-        console.log("找到标题：" + $(this).text());
+    $('article.markdown-body').find('h1, h2').each(function(index) {
         var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
         $('#toc').append(listItem);
         $(this).attr('id', 'section' + index);
     });
-    console.log("目录生成完成。");
 });
   </script>
 </body>
