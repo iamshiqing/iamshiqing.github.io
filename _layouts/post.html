@@ -30,7 +30,7 @@
 
   <div class="post-content visible">
     {% if page.subtitle %}
-    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+    <h2 id="flag" class="post-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
 
     <aside id="sidebar">
@@ -195,7 +195,7 @@
       var toc = jQuery('#toc');
       
       if (toc.length === 0 || !window.tocbot) { return; }
-      var boardCtn = jQuery('#toc');
+      var boardCtn = jQuery('#flag');
       var boardTop = boardCtn.offset().top;
       window.tocbot.init(Object.assign({
         tocSelector     : '#toc',
