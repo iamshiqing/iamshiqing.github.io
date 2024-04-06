@@ -17,7 +17,7 @@
         {% endif %}
       </div>
       <h1>{{ page.title }}</h1>
-      <div class="post-meta">
+      <div id="flag" class="post-meta">
         <span class="post-meta-item"><i class="iconfont icon-author"></i><a href="{{ site.url }}" target="_blank" rel="author">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a></></span>
         <time class="post-meta-item" datetime="{{ page.date | date:"%y-%m-%d" }}"><i class="iconfont icon-date"></i>{{ page.date | date_to_string }}</time>
       </div>
@@ -27,21 +27,19 @@
     <div class="post-cover" style="background: url('{{ page.cover }}') center no-repeat; background-size: cover;">
       {% endif %}
   </header>
-
+  
   <div class="post-content visible">
+    <aside id="sidebar">
+      <h3>目录</h3>
+      <ul id="toc"></ul>
+    </aside>
     {% if page.subtitle %}
     <h2 class="post-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
 
-    <aside id="sidebar">
-      <div>
-      <h3>目录</h3>
-      <ul id="toc"></ul>
-      
-      </div>
-    </aside>
+    
 
-    <article id="markdown-body"class="markdown-body">
+    <article  class="markdown-body">
       {{ page.content }}
     </article>
 
@@ -189,29 +187,44 @@
   <noscript>为正常使用评论功能请激活JavaScript。</noscript>
   <script src="/assets/js/prism.js"></script>
   <script src="/assets/js/index.min.js"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-  <!-- <script>
-  $(document).ready(function() {
-    $('article.markdown-body').find('h1, h2').each(function(index) {
-        var listItem = $('<li><a href="#section' + index + '">' + $(this).text() + '</a></li>');
-        $('#toc').append(listItem);
-        $(this).attr('id', 'section' + index);
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script> -->
+  <script>
+    Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+      var toc = jQuery('#toc');
+      
+      if (toc.length === 0 || !window.tocbot) { return; }
+      var boardCtn = jQuery('#flag');
+      var boardTop = boardCtn.offset().top;
+      window.tocbot.init(Object.assign({
+        tocSelector     : '#toc',
+        contentSelector : '.markdown-body',
+        linkClass       : 'tocbot-link',
+        activeLinkClass : 'tocbot-active-link',
+        listClass       : 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth    : true,
+        includeTitleTags: true,
+        headingsOffset  : -boardTop,
+      }, CONFIG.toc));
+      if (toc.find('.toc-list-item').length > 0) {
+        toc.css('visibility', 'visible');
+      }
+  
+      Fluid.events.registerRefreshCallback(function() {
+        if ('tocbot' in window) {
+          tocbot.refresh();
+          var toc = jQuery('#toc');
+          if (toc.length === 0 || !tocbot) {
+            return;
+          }
+          if (toc.find('.toc-list-item').length > 0) {
+            toc.css('visibility', 'visible');
+          }
+        }
+      });
     });
-});
-  </script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.min.js"></script>
-<script>
-tocbot.init({
-  // Where to render the table of contents.
-  tocSelector: '.toc',
-  // Where to grab the headings to build the table of contents.
-  contentSelector: '.article.markdown-body',
-  // Which headings to grab inside of the contentSelector element.
-  headingSelector: 'h1, h2, h3',
-  // For headings inside relative or absolute positioned containers within content.
-  hasInnerContainers: true,
-});
-</script>
+  </script>
 </body>
 
 </html>
