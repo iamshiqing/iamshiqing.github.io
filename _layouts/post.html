@@ -44,24 +44,6 @@
     <article  class="markdown-body">
       {{ page.content }}
     </article>
-    
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-      <aside class="sidebar" style="margin-left: -1rem">
-        <div id="toc">
-      <p class="toc-header">
-        <i class="iconfont icon-list"></i>
-        <span>目录</span>
-      </p>
-      <div class="toc-body" id="toc-body"></div>
-    </div>
-    
-    
-    
-      </aside>
-    
-    
-        </div>
 
     {% if site.reward.enable %}
       {% include reward.html %}
@@ -73,7 +55,23 @@
     </div>
     {% endif %}
   </div>
-
+  <div class="side-col d-none d-lg-block col-lg-2">
+      
+    <aside class="sidebar" style="margin-left: -1rem">
+      <div id="toc">
+    <p class="toc-header">
+      <i class="iconfont icon-list"></i>
+      <span>目录</span>
+    </p>
+    <div class="toc-body" id="toc-body"></div>
+  </div>
+  
+  
+  
+    </aside>
+  
+  
+      </div>
   
 
 
