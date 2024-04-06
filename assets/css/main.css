@@ -699,7 +699,7 @@ sup > a::before,
   color: #ff4500;
 }
 #toc {
-  visibility: hidden;
+  visibility: visible;
 }
 .toc-header {
   margin-bottom: 0.5rem;
