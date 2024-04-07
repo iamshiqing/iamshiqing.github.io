@@ -50,13 +50,13 @@
 
 
 
-      
+    {% if site.reward.enable %}
+      {% include reward.html %}
+    {% endif %}  
     </div>
     </div>
   </div>
-    {% if site.reward.enable %}
-      {% include reward.html %}
-    {% endif %}
+    
 
     {% if site.social-share %}
     <div class="social-share-wrapper">
