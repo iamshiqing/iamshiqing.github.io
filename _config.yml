@@ -13,7 +13,7 @@ nav:
   TAGS: '/tags.html'
   ACM: '/acm.html'
   TODOLIST: '/vue/index.html'
-  SELECTFOOD: '/select_food.html'
+  SELECTFOOD: '/tools/select_food.html'
 
 # Footer
 footer:
@@ -22,7 +22,7 @@ footer:
 # Author 配置博主信息
 author: '时倾'
 nickname: 'iamshiqing'
-bio: 'ACMer，后端开发工程师，热爱技术。'
+bio: 'ACMer，软件开发工程师，热爱技术。'
 avatar: 'assets/img/profile.png'
 
 # Search
