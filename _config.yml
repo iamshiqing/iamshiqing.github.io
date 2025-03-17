@@ -13,6 +13,7 @@ nav:
   TAGS: '/tags.html'
   ACM: '/acm.html'
   TODOLIST: '/vue/index.html'
+  SELECTFOOD: '/select_food.html'
 
 # Footer
 footer:

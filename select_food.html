@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什么?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .wheel-container {
+            position: relative;
+            width: 80vw;
+            height: 80vw;
+            max-width: 400px;
+            max-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #000;
+            position: absolute;
+        }
+        .pointer {
+            position: absolute;
+            width: 5px;
+            height: 50px;
+            background: red;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: translateX(-50%) translateY(-100%) rotate(0deg);
+            z-index: 10;
+            transition: transform 3s ease-out;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid red;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>今天吃什么？</h1>
+    <div class="wheel-container">
+        <canvas id="wheelCanvas" class="wheel"></canvas>
+        <div class="pointer">
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <button onclick="startSelection()">开始</button>
+    <p id="result"></p>
+    <script>
+        let foods = ["口水鸡","肉灌饼","汪世兴","土豆泥拌饭","福鼎肉片","步大叔","炒粉","烤串","汉江里","临榆","汉堡","螺蛳粉","羊杂面","新疆炒米粉","饺子","自选","寿司","不吃了！"];
+        const canvas = document.getElementById("wheelCanvas");
+        const ctx = canvas.getContext("2d");
+        const pointer = document.querySelector(".pointer");
+        canvas.width = canvas.height = Math.min(window.innerWidth * 0.8, 400);
+        const wheelRadius = canvas.width / 2;
+
+        function drawWheel() {
+            const numSlices = foods.length;
+            const sliceAngle = (2 * Math.PI) / numSlices;
+            for (let i = 0; i < numSlices; i++) {
+                ctx.beginPath();
+                ctx.moveTo(wheelRadius, wheelRadius);
+                
+                // 让绘制从 12 点钟方向开始，而不是 3 点钟方向
+                const startAngle = i * sliceAngle - Math.PI / 2;
+                const endAngle = (i + 1) * sliceAngle - Math.PI / 2;
+                
+                ctx.arc(wheelRadius, wheelRadius, wheelRadius, startAngle, endAngle);
+                ctx.fillStyle = i % 2 === 0 ? "#FFD700" : "#FFA500";
+                ctx.fill();
+                ctx.stroke();
+
+                // 计算文本位置，让文字显示在扇形中间
+                const textAngle = startAngle + sliceAngle / 2;
+                ctx.fillStyle = "#000";
+                ctx.font = "16px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText(
+                    foods[i],
+                    wheelRadius + Math.cos(textAngle) * wheelRadius * 0.7,
+                    wheelRadius + Math.sin(textAngle) * wheelRadius * 0.7
+                );
+            }
+        }
+
+        let currentRotation = 0;
+        let selectedIndex = 0;  // Track the selected index
+        let offset = Math.PI / foods.length;
+        let showIndex = 0;
+        function startSelection() {
+            if (foods.length === 0) {
+                alert("食物列表为空，请添加食物！");
+                return;
+            }
+
+            // Generate a random number of turns (between 5 and 10)
+            const randomTurns = Math.floor(Math.random() * 5) + 5;
+
+            // Randomly select one food item
+            selectedIndex = Math.floor(Math.random() * foods.length);
+
+            // Calculate the angle of the selected slice (food)
+            const sliceAngle = (2 * Math.PI) / foods.length;
+            const finalAngle = selectedIndex * sliceAngle ;  // Center of the slice
+
+            // Add random turns to simulate spinning and add the final angle to land on the selected food
+            currentRotation += randomTurns * 2 * Math.PI + finalAngle;
+
+            // Rotate the pointer to the calculated position
+            pointer.style.transform = `translateX(-50%) translateY(-100%) rotate(${currentRotation+offset}rad)`;
+            // After the animation finishes (3 seconds), show the result
+
+            showIndex = (selectedIndex+showIndex)%foods.length;
+
+            setTimeout(() => {
+                document.getElementById("result").textContent = `今天吃：${foods[showIndex]}`;
+            }, 3000); // Match the timeout with animation duration
+        }
+
+        drawWheel(); // Draw the wheel initially
+    </script>
+</body>
+</html>
+
+
+
+
+
+
