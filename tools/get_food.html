@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谁去取外卖！</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .remove-btn {
+            width: 36px;
+            height: 36px;
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>谁去取外卖！</h2>
+        <div id="nameInputs"></div>
+        <button onclick="addInput()">添加姓名</button>
+        <label for="count">要选取的人数：</label>
+        <input type="number" id="count" min="1" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;">
+        <button onclick="pickRandom()">随机选择</button>
+        <h3>选中的人员：</h3>
+        <ul id="result"></ul>
+    </div>
+    
+    <script>
+        function addInput() {
+            let container = document.getElementById("nameInputs");
+            let div = document.createElement("div");
+            div.className = "input-group";
+            
+            let input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "输入姓名";
+            
+            let removeBtn = document.createElement("button");
+            removeBtn.textContent = "×";
+            removeBtn.className = "remove-btn";
+            removeBtn.onclick = function () {
+                container.removeChild(div);
+            };
+            
+            div.appendChild(input);
+            div.appendChild(removeBtn);
+            container.appendChild(div);
+        }
+
+        function pickRandom() {
+            let inputs = document.querySelectorAll("#nameInputs input");
+            let names = Array.from(inputs).map(input => input.value.trim()).filter(name => name);
+            let count = parseInt(document.getElementById("count").value);
+            let resultList = document.getElementById("result");
+            resultList.innerHTML = "";
+            
+            if (names.length === 0 || isNaN(count) || count < 1) {
+                alert("请正确输入姓名列表和选取人数！");
+                return;
+            }
+            
+            if (count > names.length) {
+                alert("选取人数不能大于总人数！");
+                return;
+            }
+            
+            let selected = [];
+            while (selected.length < count) {
+                let randomIndex = Math.floor(Math.random() * names.length);
+                if (!selected.includes(names[randomIndex])) {
+                    selected.push(names[randomIndex]);
+                }
+            }
+            
+            selected.forEach(name => {
+                let li = document.createElement("li");
+                li.textContent = name;
+                resultList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
